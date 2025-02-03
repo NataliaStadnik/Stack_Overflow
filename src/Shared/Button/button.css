@@ -1,0 +1,27 @@
+.btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: var(--color-grey);
+  border-radius: 5px;
+  background-color: var(--color-white);
+  box-shadow: 4px 4px 8px 0px rgba(10, 45, 131, 0.42);
+  transition: all .2s ease-in;
+}
+
+.btn:hover:not(:focus-visible) {
+  color: white;
+  background-color: rgb(129 178 245 / 76%);
+}
+
+.btn:active:not(:focus-visible) {
+  color: white;
+  background-color: var(--color-dark-blue);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-dark-blue);
+  color: white;
+  background-color: rgb(129 178 245 / 76%);
+}

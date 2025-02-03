@@ -1,0 +1,13 @@
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+.layout {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0 20px;
+}
