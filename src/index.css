@@ -38,6 +38,7 @@ img {
 
 #root {
   --color-white: #fff;
+  --color-light-white: #ffffffb3;
   --color-blue: #5053f4;
   --color-dark-blue: rgb(32 59 95 / 90%);
   --color-grey: #4e4e4e;

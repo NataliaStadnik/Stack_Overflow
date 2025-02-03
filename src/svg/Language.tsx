@@ -4,6 +4,7 @@ import { svgProps } from "./interfaces";
 const Language: FC<svgProps> = ({ classes }) => {
   return (
     <svg
+      aria-hidden="true"
       className={classes}
       width="800px"
       height="800px"

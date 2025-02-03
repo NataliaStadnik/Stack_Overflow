@@ -1,0 +1,21 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 16%;
+  gap: 20px;
+  height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  background-color: var(--color-blue);
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.svg-menu {
+  width: 35px;
+  height: 35px;
+}
