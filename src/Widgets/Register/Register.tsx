@@ -21,7 +21,7 @@ const Register: FC<RegisterProps> = ({ type }) => {
       <form className="modal-form">
         <InputElement
           svg={<User classes="user-svg" color="black" />}
-          placeholder={"UserName"}
+          placeholder={"User name"}
           type={"text"}
         />
         <InputElement

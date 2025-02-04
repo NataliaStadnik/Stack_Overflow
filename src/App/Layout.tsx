@@ -1,6 +1,7 @@
 import Header from "../Widgets/Header/Header";
 import Menu from "../Widgets/Menu/Menu";
 import HomePage from "./Pages/HomePage/HomePage";
+import QuestionsPage from "./Pages/QuestionsPage/QuestionsPage";
 
 const Layout = () => {
   return (
@@ -11,6 +12,7 @@ const Layout = () => {
         <Menu />
         <div className="container section">
           <HomePage />
+          {/* <QuestionsPage /> */}
         </div>
       </div>
     </div>

@@ -1,6 +1,10 @@
-const Archery = () => {
+import { FC } from "react";
+import { svgProps } from "./interfaces";
+
+const Archery: FC<svgProps> = ({ classes }) => {
   return (
     <svg
+      className={classes}
       aria-hidden="true"
       height="800px"
       width="800px"

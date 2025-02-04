@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router";
 import "./App.css";
 import Layout from "./Layout";
-import Modal from "../Widgets/Modal/Modal";
+import Modal from "./Pages/Modal/Modal";
 
 const App = () => {
   return (
