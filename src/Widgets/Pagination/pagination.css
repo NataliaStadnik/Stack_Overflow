@@ -1,0 +1,43 @@
+.arrow-pag {
+  width: 30px;
+  height: 30px;
+  transition: all .2s ease-in;
+}
+
+.arrow-pag-left {
+  transform: rotate(180deg);
+}
+
+.page-number {
+  padding: 10px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  border-radius: 5px;
+  color: var(--color-grey);
+  opacity: .7;
+  background-color: var(--color-light-grey);
+  user-select: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow-pag:hover:not(:active) {
+  transform: translateX(7px) scale(110%);
+}
+
+.arrow-pag-left:hover:not(:active) {
+  transform: translateX(-7px) rotate(180deg) scale(110%);
+}
+
+.arrow-pag:active {
+  transform: scale(100%);
+}
+
+.arrow-pag-left:active {
+  transform: rotate(180deg) scale(100%);
+}

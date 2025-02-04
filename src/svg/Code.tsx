@@ -1,6 +1,10 @@
-const Code = () => {
+import { FC } from "react";
+import { svgProps } from "./interfaces";
+
+const Code: FC<svgProps> = ({ classes }) => {
   return (
     <svg
+      className={classes}
       aria-hidden="true"
       width="800px"
       height="800px"
