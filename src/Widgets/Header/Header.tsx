@@ -14,7 +14,7 @@ const Header = () => {
         </Link>
 
         <div className="header__right">
-          <Button>SIGN OUT</Button>
+          <Button classes="btn-header">SIGN OUT</Button>
           <div className="language">
             <Language classes="language__svg" />
             <span className="name language__name">EN</span>

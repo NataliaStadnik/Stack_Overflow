@@ -10,17 +10,17 @@
   transition: all .2s ease-in;
 }
 
-.btn:hover:not(:focus-visible) {
+.btn-header:hover:not(:focus-visible) {
   color: white;
   background-color: rgb(129 178 245 / 76%);
 }
 
-.btn:active:not(:focus-visible) {
+.btn-header:active:not(:focus-visible) {
   color: white;
   background-color: var(--color-dark-blue);
 }
 
-.btn:focus-visible {
+.btn-header:focus-visible {
   outline: 3px solid var(--color-dark-blue);
   color: white;
   background-color: rgb(129 178 245 / 76%);

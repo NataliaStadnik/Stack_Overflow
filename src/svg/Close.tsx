@@ -1,6 +1,10 @@
-const Close = () => {
+import { FC } from "react";
+import { svgProps } from "./interfaces";
+
+const Close: FC<svgProps> = ({ classes, color = "#fff" }) => {
   return (
     <svg
+      className={classes}
       aria-hidden="true"
       width="800px"
       height="800px"
@@ -12,7 +16,7 @@ const Close = () => {
         <path
           id="Vector"
           d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18"
-          stroke="#000000"
+          stroke={color}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
