@@ -1,0 +1,13 @@
+.edit-name {
+  flex-basis: 50%;
+}
+
+.edit-name .textfield-medium,
+.edit-name .textfield-medium-size {
+  width: 100%;
+}
+
+.edit-name .edit-user--btn {
+  width: 100%;
+  background-color: rgb(57, 171, 57);
+}

@@ -1,0 +1,12 @@
+.questions-page {
+  padding-top: 15px;
+}
+
+.section .ask-question {
+  position: absolute;
+  width: 30%;
+  top: 110px;
+  left: 30px;
+  padding: 10px 0;
+  transition: all .2s ease-in;
+}

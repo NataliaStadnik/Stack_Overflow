@@ -38,6 +38,11 @@ img {
 
 #root {
   --color-white: #fff;
+  --color-light-white: #ffffffb3;
+  --color-blue: #5053f4;
+  --color-dark-blue: rgb(32 59 95 / 90%);
+  --color-grey: #4e4e4e;
+  --color-light-grey: #80808045;
 }
 
 body {
@@ -52,6 +57,7 @@ h3,
 h4,
 p {
   margin: 0;
+  color: inherit;
 }
 
 button,
@@ -97,10 +103,4 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 30px;
 }

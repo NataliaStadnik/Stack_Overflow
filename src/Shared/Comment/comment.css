@@ -1,0 +1,32 @@
+.comment {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.comment__field {
+  width: 75%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  border-bottom: 2px solid rgb(197, 67, 67);
+  background-color: rgba(184, 184, 184, 0.362);
+}
+
+.comment__text {
+  color: rgb(197, 67, 67);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.comment__svg {
+  width: 30px;
+  height: 30px;
+}
+
+.comment__img {
+  height: max-content;
+  padding: 10px;
+  background-color: rgb(57, 171, 57);
+  border-radius: 5px;
+}
