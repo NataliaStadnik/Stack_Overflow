@@ -1,0 +1,36 @@
+.new-snippet__title {
+  color: var(--color-dark-blue);
+}
+
+.new-snippet {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.snippet-form {
+  width: 100%;
+}
+
+.select-wrap .new-wrap,
+.new-snippet .select-wrap,
+.new-wrap .select-input {
+  width: 100%;
+}
+
+.new-snippet .new-snippet__code {
+  height: 300px;
+  border-left: 1px solid var(--color-light-grey);
+  border-right: 1px solid var(--color-light-grey);
+}
+
+.code-title {
+  margin-bottom: 15px;
+}
+
+.new-snippet__body {
+  margin-bottom: 20px;
+}
+
+.new-snippet__btn {
+  width: 100%;
+}

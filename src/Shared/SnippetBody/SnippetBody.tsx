@@ -1,8 +1,13 @@
+import { FC } from "react";
 import "./snippetBody.css";
 
-const SnippetBody = () => {
+interface SnippetBodyProps {
+  classes?: string;
+}
+
+const SnippetBody: FC<SnippetBodyProps> = ({ classes = "" }) => {
   return (
-    <div className="snippet__body codebase">
+    <div className={`snippet__body codebase ${classes}`}>
       <div className="codebase__number">
         <span className="snippet-text codebase__text">1</span>
       </div>

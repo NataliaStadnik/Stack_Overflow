@@ -1,6 +1,8 @@
 .snippet__body {
   height: 200px;
   display: flex;
+  border-bottom: 1px solid var(--color-light-grey);
+  border-top: 1px solid var(--color-light-grey);
 }
 
 .codebase__number {
@@ -17,6 +19,7 @@
 
 .codebase__text:hover {
   background-color: rgba(136, 185, 255, 0.3);
+  cursor: pointer;
 }
 
 .code-text {

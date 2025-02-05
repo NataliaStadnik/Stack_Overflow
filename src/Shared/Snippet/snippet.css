@@ -10,7 +10,6 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-bottom: 1px solid var(--color-light-grey);
 }
 
 .snippet__footer {
@@ -18,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-top: 1px solid var(--color-light-grey);
 }
 
 .snippet__language,
