@@ -4,19 +4,17 @@ import InputElement from "../../Shared/InputElement/InputElement";
 import Key from "../../svg/Key";
 import User from "../../svg/User";
 import "./register.css";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 interface RegisterProps {
   type: string;
 }
 
 const Register: FC<RegisterProps> = ({ type }) => {
-  const [state, updateState] = useState(type);
-
   return (
     <div className="modal">
       <h2 className="title">
-        {`Sign ${state === "register" ? "up" : "in"} to Codelang`}
+        {`Sign ${type === "register" ? "up" : "in"} to Codelang`}
       </h2>
       <form className="modal-form">
         <InputElement
@@ -30,7 +28,7 @@ const Register: FC<RegisterProps> = ({ type }) => {
           type={"password"}
         />
 
-        {state === "register" && (
+        {type === "register" && (
           <InputElement
             svg={<Key />}
             placeholder={"Confirm password"}
@@ -42,16 +40,16 @@ const Register: FC<RegisterProps> = ({ type }) => {
       </form>
 
       <div className="sign">
-        {state === "login" && (
-          <Link className="sign__link" to={""}>
+        {type === "login" && (
+          <Link className="sign__link" to={"/register"}>
             Create an account
           </Link>
         )}
 
-        {state === "register" && (
+        {type === "register" && (
           <>
             <p className="sign__text">Already have an account?</p>
-            <Link className="sign__link" to={""}>
+            <Link className="sign__link" to={"/login"}>
               Sign in
             </Link>
           </>

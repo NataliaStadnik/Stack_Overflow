@@ -5,10 +5,10 @@ import { Link } from "react-router";
 
 const UserNav = () => {
   return (
-    <Link to={""} className="menu__user">
+    <Link to={"/user"} className="menu__user">
       <img className="menu__img" src={User} alt="User photo" />
       <span className="name menu__name">denis</span>
-      <Arrow classes="user-svg" color="#fff" />
+      <Arrow classes="menu__user--svg" color="#fff" />
     </Link>
   );
 };

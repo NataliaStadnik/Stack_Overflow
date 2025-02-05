@@ -1,5 +1,5 @@
+import Snippet from "../Snippet/Snippet";
 import "./snippetsList.css";
-import Snippet from "../../Shared/Snippet/Snippet";
 
 const arr = [1, 2, 3];
 
@@ -9,7 +9,9 @@ const SnippetsList = () => {
   return (
     <ul className="snippet-list">
       {arr.map((elem) => (
-        <Snippet key={elem} />
+        <li key={elem} className="snippet">
+          <Snippet />
+        </li>
       ))}
     </ul>
   );

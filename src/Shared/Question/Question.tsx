@@ -16,7 +16,12 @@ const Question = () => {
           </p>
         </div>
         <div className="question-article__body">Hello world description</div>
-        <ButtonSvg classes="eye-btn" svg={<Eye classes="eye-svg" />} />
+        <ButtonSvg
+          type="link"
+          to="/edit_question"
+          classes="eye-btn"
+          svg={<Eye classes="eye-svg" />}
+        />
       </article>
     </li>
   );

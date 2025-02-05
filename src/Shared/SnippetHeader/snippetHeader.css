@@ -1,0 +1,13 @@
+.snippet__header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.snippet__language,
+.snippet__user {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
