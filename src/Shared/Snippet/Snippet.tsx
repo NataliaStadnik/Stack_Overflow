@@ -6,6 +6,7 @@ import Message from "../../svg/Message";
 import User from "../../svg/User";
 import ButtonSvg from "../ButtonSvg/ButtonSvg";
 import "./snippet.css";
+import SnippetBody from "../SnippetBody/SnippetBody";
 
 // interface Snippet {
 
@@ -25,14 +26,7 @@ const Snippet = () => {
             <span className="snippet-text">JavaScript</span>
           </div>
         </div>
-        <div className="snippet__body codebase">
-          <div className="codebase__number">
-            <span className="snippet-text codebase__text">1</span>
-          </div>
-          <div className="snippet-text code-text">
-            <span className="codebase__text">const user = 1234;</span>
-          </div>
-        </div>
+        <SnippetBody />
         <div className="snippet__footer">
           <div className="snippet__likes">
             <ButtonSvg

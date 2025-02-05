@@ -11,8 +11,8 @@ const Modal = () => {
           classes="close-btn"
           svg={<Close classes="close-modal-svg" />}
         />
-        <Register type={"register"} />
-        {/* <Register type={"login"} /> */}
+        {/* <Register type={"register"} /> */}
+        <Register type={"login"} />
       </div>
     </div>
   );

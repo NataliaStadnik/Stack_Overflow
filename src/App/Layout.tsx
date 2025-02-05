@@ -1,6 +1,7 @@
 import Header from "../Widgets/Header/Header";
 import Menu from "../Widgets/Menu/Menu";
 import HomePage from "./Pages/HomePage/HomePage";
+import NewSnippetPage from "./Pages/NewSnippetPage/NewSnippetPage";
 import QuestionsPage from "./Pages/QuestionsPage/QuestionsPage";
 
 const Layout = () => {
@@ -11,8 +12,9 @@ const Layout = () => {
       <div className="outer-wrapper">
         <Menu />
         <div className="container section">
-          <HomePage />
+          {/* <HomePage /> */}
           {/* <QuestionsPage /> */}
+          <NewSnippetPage />
         </div>
       </div>
     </div>

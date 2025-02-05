@@ -2,24 +2,11 @@
   padding-top: 15px;
 }
 
-.ask-question {
+.section .ask-question {
   position: absolute;
   width: 30%;
   top: 100px;
   left: 30px;
-  color: var(--color-white);
-  background-color: var(--color-blue);
+  padding: 10px 0;
   transition: all .2s ease-in;
-}
-
-.ask-question:focus-visible {
-  outline: 2px solid var(--color-dark-blue);
-}
-
-.ask-question:hover:not(:focus-visible) {
-  background-color: rgba(1, 1, 146, 0.7);
-}
-
-.ask-question:active {
-  background-color: rgba(1, 1, 146, 0.9);
 }

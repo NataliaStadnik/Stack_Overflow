@@ -1,4 +1,4 @@
-import Button from "../../../Shared/Button/Button";
+import { Button } from "ui-components_innowise";
 import AllQuestions from "../../../Widgets/AllQuestions/AllQuestions";
 import Pagination from "../../../Widgets/Pagination/Pagination";
 import "./questionsPage.css";

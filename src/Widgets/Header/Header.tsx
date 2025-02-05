@@ -1,9 +1,8 @@
 import "./header.css";
 import Favicon from "../../svg/Favicon";
-import Button from "../../Shared/Button/Button";
 import Language from "../../svg/Language";
 import { Link } from "react-router";
-
+import { Button } from "ui-components_innowise";
 const Header = () => {
   return (
     <header className="header">

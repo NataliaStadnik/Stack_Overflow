@@ -13,11 +13,6 @@
   border-bottom: 1px solid var(--color-light-grey);
 }
 
-.snippet__body {
-  height: 200px;
-  display: flex;
-}
-
 .snippet__footer {
   padding: 10px;
   display: flex;
@@ -62,26 +57,6 @@
 
 .likes-wrap:hover svg {
   transform: scale(115%);
-}
-
-.codebase__number {
-  background-color: rgba(184, 184, 184, 0.362);
-  border-right: 1px solid var(--color-light-grey);
-}
-
-.codebase__text {
-  display: inline-block;
-  padding: 4px 8px;
-  width: 100%;
-  transition: all .2s ease-in;
-}
-
-.codebase__text:hover {
-  background-color: rgba(136, 185, 255, 0.3);
-}
-
-.code-text {
-  width: 100%;
 }
 
 .snippet__feedback {

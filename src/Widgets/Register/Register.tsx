@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Button from "../../Shared/Button/Button";
+import { Button } from "ui-components_innowise";
 import InputElement from "../../Shared/InputElement/InputElement";
 import Key from "../../svg/Key";
 import User from "../../svg/User";
