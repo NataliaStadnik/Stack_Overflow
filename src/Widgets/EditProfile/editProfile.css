@@ -1,0 +1,23 @@
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 90%;
+  border-radius: 5px;
+  padding: 40px 30px;
+  box-shadow: 0px 5px 10px 2px rgb(0 0 0 / 20%);
+}
+
+.edit-profile__title {
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: underline;
+}
+
+.edit-wrapper {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+}
