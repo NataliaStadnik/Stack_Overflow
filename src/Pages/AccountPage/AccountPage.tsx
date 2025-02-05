@@ -1,6 +1,6 @@
-import AccountInfo from "../../../Widgets/AccountInfo/AccountInfo";
-import EditProfile from "../../../Widgets/EditProfile/EditProfile";
-import HeaderSection from "../../../Widgets/HeaderSection/HeaderSection";
+import AccountInfo from "../../Widgets/AccountInfo/AccountInfo";
+import EditProfile from "../../Widgets/EditProfile/EditProfile";
+import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import "./accountPage.css";
 
 const AccountPage = () => {

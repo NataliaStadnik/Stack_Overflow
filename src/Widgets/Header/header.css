@@ -3,8 +3,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: var(--color-blue);
   z-index: 50;
   box-shadow: -1px 2px 8px 1px rgba(32, 32, 34, 0.56);

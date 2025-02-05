@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 90%;
   border-radius: 5px;
-  padding: 40px;
+  padding: 40px 70px;
   box-shadow: 0px 5px 10px 2px rgb(0 0 0 / 20%);
 }
 
@@ -37,8 +37,8 @@
 }
 
 .infos__img {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 100px;
 }
 

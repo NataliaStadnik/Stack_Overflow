@@ -1,8 +1,8 @@
 import "./homePage.css";
-import Favicon from "../../../svg/Favicon";
-import HeaderSection from "../../../Widgets/HeaderSection/HeaderSection";
-import Pagination from "../../../Widgets/Pagination/Pagination";
-import SnippetsList from "../../../Widgets/SnippetsList/SnippetsList";
+import Favicon from "../../svg/Favicon";
+import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
+import Pagination from "../../Widgets/Pagination/Pagination";
+import SnippetsList from "../../Widgets/SnippetsList/SnippetsList";
 
 const HomePage = () => {
   return (

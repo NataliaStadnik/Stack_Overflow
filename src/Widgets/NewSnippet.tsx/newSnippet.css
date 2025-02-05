@@ -9,6 +9,9 @@
 
 .snippet-form {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .select-wrap .new-wrap,
@@ -28,9 +31,11 @@
 }
 
 .new-snippet__body {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
-.new-snippet__btn {
-  width: 100%;
+.snippet-form .new-snippet__btn {
+  width: 50%;
+  padding: 15px;
+  font-size: 18px;
 }

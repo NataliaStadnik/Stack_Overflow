@@ -7,15 +7,16 @@ import User from "../../svg/User";
 import ButtonSvg from "../ButtonSvg/ButtonSvg";
 import "./snippet.css";
 import SnippetBody from "../SnippetBody/SnippetBody";
+import { FC } from "react";
 
-// interface Snippet {
+interface SnippetProps {
+  children?: JSX.Element;
+}
 
-// }
-
-const Snippet = () => {
+const Snippet: FC<SnippetProps> = ({ children }) => {
   return (
-    <li className="snippet snippet__wrapper">
-      <article>
+    <li className="snippet">
+      <article className="snippet__wrapper">
         <div className="snippet__header">
           <div className="snippet__user">
             <User classes="snippet__svg" color="#4e4e4e" />
@@ -48,6 +49,7 @@ const Snippet = () => {
           </Link>
         </div>
       </article>
+      {children}
     </li>
   );
 };

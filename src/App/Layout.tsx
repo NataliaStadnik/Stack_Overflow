@@ -1,9 +1,11 @@
+import AccountPage from "../Pages/AccountPage/AccountPage";
+import HomePage from "../Pages/HomePage/HomePage";
+import NewQuestionPage from "../Pages/NewQuestionPage/NewQuestionPage";
+import NewSnippetPage from "../Pages/NewSnippetPage/NewSnippetPage";
+import PostPage from "../Pages/PostPage/PostPage";
+import QuestionsPage from "../Pages/QuestionsPage/QuestionsPage";
 import Header from "../Widgets/Header/Header";
 import Menu from "../Widgets/Menu/Menu";
-import AccountPage from "./Pages/AccountPage/AccountPage";
-import HomePage from "./Pages/HomePage/HomePage";
-import NewSnippetPage from "./Pages/NewSnippetPage/NewSnippetPage";
-import QuestionsPage from "./Pages/QuestionsPage/QuestionsPage";
 
 const Layout = () => {
   return (
@@ -12,11 +14,13 @@ const Layout = () => {
       <Header />
       <div className="outer-wrapper">
         <Menu />
-        <div className="container section">
-          {/* <HomePage /> */}
+        <div className="container section section__container">
+          <HomePage />
           {/* <QuestionsPage /> */}
           {/* <NewSnippetPage /> */}
-          <AccountPage />
+          {/* <AccountPage /> */}
+          {/* <NewQuestionPage /> */}
+          {/* <PostPage /> */}
         </div>
       </div>
     </div>

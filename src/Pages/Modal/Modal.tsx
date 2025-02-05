@@ -1,6 +1,6 @@
-import ButtonSvg from "../../../Shared/ButtonSvg/ButtonSvg";
-import Close from "../../../svg/Close";
-import Register from "../../../Widgets/Register/Register";
+import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
+import Close from "../../svg/Close";
+import Register from "../../Widgets/Register/Register";
 import "./modal.css";
 
 const Modal = () => {
@@ -11,8 +11,8 @@ const Modal = () => {
           classes="close-btn"
           svg={<Close classes="close-modal-svg" />}
         />
-        {/* <Register type={"register"} /> */}
-        <Register type={"login"} />
+        <Register type={"register"} />
+        {/* <Register type={"login"} /> */}
       </div>
     </div>
   );

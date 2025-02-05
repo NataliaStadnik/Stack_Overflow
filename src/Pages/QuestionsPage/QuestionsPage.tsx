@@ -1,6 +1,6 @@
 import { Button } from "ui-components_innowise";
-import AllQuestions from "../../../Widgets/AllQuestions/AllQuestions";
-import Pagination from "../../../Widgets/Pagination/Pagination";
+import AllQuestions from "../../Widgets/AllQuestions/AllQuestions";
+import Pagination from "../../Widgets/Pagination/Pagination";
 import "./questionsPage.css";
 
 const QuestionsPage = () => {
