@@ -19,6 +19,7 @@ const Header = () => {
     mutationFn: authLogout,
     onSuccess() {
       dispatch(setAuthFalse());
+      navigate("/");
     },
   });
 

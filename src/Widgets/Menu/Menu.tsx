@@ -6,7 +6,7 @@ import { menuElements } from "./menuElements";
 const Menu = () => {
   return (
     <nav className="menu container">
-      <UserNav />
+      <UserNav to="/user" />
       <ul className="menu__list">
         {menuElements.map((elem) => (
           <NavElement
