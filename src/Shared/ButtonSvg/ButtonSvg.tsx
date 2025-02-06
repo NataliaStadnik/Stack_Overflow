@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, HTMLAttributes } from "react";
 import "./buttonSvg.css";
 import { Link } from "react-router";
 
-interface ButtonSvgProps {
+interface ButtonSvgProps
+  extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   svg?: JSX.Element;
   classes?: string;
   label?: string;
@@ -16,16 +17,17 @@ const ButtonSvg: FC<ButtonSvgProps> = ({
   label,
   type = "button",
   to = "",
+  ...props
 }) => {
   if (type === "button") {
     return (
-      <button className={`btn__svg ${classes ? classes : ""}`}>
+      <button className={`btn__svg ${classes ? classes : ""}`} {...props}>
         {label}
         {svg}
       </button>
     );
   } else {
-    <Link to={to} className={`btn__svg ${classes ? classes : ""}`}>
+    <Link to={to} className={`btn__svg ${classes ? classes : ""}`} {...props}>
       {label}
       {svg}
     </Link>;

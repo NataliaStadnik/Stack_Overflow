@@ -26,8 +26,8 @@ const Router = () => {
       <Route path="/edit_question" element={<EditQuestionPage />} />
       <Route path="/new_snippet" element={<NewSnippetPage />} />
       <Route path="/questions" element={<QuestionsPage />} />
-      <Route path="/register" element={<Modal type={"register"} />} />
-      <Route path="/login" element={<Modal type={"login"} />} />
+      <Route path="/register" element={<Modal type="register" />} />
+      <Route path="/login" element={<Modal type="login" />} />
     </Routes>
   );
 };

@@ -1,47 +1,46 @@
 import { Link, useNavigate } from "react-router";
 import { Button } from "ui-components_innowise";
 import InputElement from "../../Shared/InputElement/InputElement";
-import "./register.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import {
-  createRegisterForm,
-  createRegisterShema,
-  registerUser,
-} from "./registerUser";
+import { createLoginForm, createLoginShema, authLogin } from "./authLogin";
 import Loader from "../../Shared/Loader/Loader";
-import { registerElementArr } from "./registerElementArr";
+import { useDispatch } from "react-redux";
+import { setAuthTrue } from "../../store/authSlice";
+import { loginElementArr } from "./loginElementArr";
 
-const Register = () => {
+const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<createRegisterForm>({
-    resolver: zodResolver(createRegisterShema),
+  } = useForm<createLoginForm>({
+    resolver: zodResolver(createLoginShema),
   });
 
   const registerMutation = useMutation({
-    mutationFn: registerUser,
+    mutationFn: authLogin,
     onSuccess() {
+      dispatch(setAuthTrue());
       reset();
-      navigate("/login");
+      navigate("/");
     },
   });
 
   return (
     <div className="modal">
-      <h2 className="title">Sign up to Codelang</h2>
+      <h2 className="title">Sign in to Codelang</h2>
       <form
         className="modal-form"
         onSubmit={handleSubmit((data) => {
           registerMutation.mutate(data);
         })}
       >
-        {registerElementArr.map((elem) => (
+        {loginElementArr.map((elem) => (
           <InputElement
             key={elem.id}
             svg={elem.svg}
@@ -67,13 +66,12 @@ const Register = () => {
       </form>
 
       <div className="sign">
-        <p className="sign__text">Already have an account?</p>
-        <Link className="sign__link" to={"/login"}>
-          Sign in
+        <Link className="sign__link" to={"/register"}>
+          Create an account
         </Link>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;

@@ -1,7 +1,8 @@
 .modal-form {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 22px;
 }
 
 .modal-form .btn-confirm {
@@ -59,4 +60,13 @@
 .user-svg {
   width: 24px;
   height: 24px;
+}
+
+.register--error {
+  width: 100%;
+  position: absolute;
+  bottom: 55px;
+  left: 10px;
+  color: var(--color-red-error);
+  font-size: 14px;
 }

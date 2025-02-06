@@ -36,19 +36,20 @@ img {
   height: auto;
 }
 
-#root {
+:root {
   --color-white: #fff;
   --color-light-white: #ffffffb3;
   --color-blue: #5053f4;
   --color-dark-blue: rgb(32 59 95 / 90%);
   --color-grey: #4e4e4e;
   --color-light-grey: #80808045;
+  --color-red-error: rgb(250, 15, 15);
 }
 
 body {
   font-family: "Play", sans-serif;
   font-weight: 400;
-  color: var(--color-white);
+  color: black;
 }
 
 h1,

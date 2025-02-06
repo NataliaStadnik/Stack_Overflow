@@ -44,3 +44,21 @@
 .inputs-login__fieldr+svg path {
   transition: fill .3s ease-in-out;
 }
+
+.inputs-login--error,
+.inputs-login--error:hover,
+.inputs-login--error:focus-visible {
+  border-color: var(--color-red-error);
+}
+
+.inputs-login--error+svg path {
+  fill: var(--color-red-error);
+}
+
+.inputs-text--error {
+  position: absolute;
+  top: -13px;
+  left: 0;
+  color: var(--color-red-error);
+  font-size: 12px;
+}
