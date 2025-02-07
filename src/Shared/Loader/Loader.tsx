@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./Loader.css";
+import { createPortal } from "react-dom";
 
 interface LoaderProps {
   type: "big" | "small";
@@ -7,10 +8,11 @@ interface LoaderProps {
 
 const Loader: FC<LoaderProps> = ({ type }) => {
   if (type === "big") {
-    return (
+    return createPortal(
       <div className="loader-wrap">
         <span className={"loader"}></span>
-      </div>
+      </div>,
+      document.body
     );
   }
   return <span className={"loader loader--mini"}></span>;

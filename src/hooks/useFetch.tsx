@@ -3,8 +3,15 @@ import { useState, useEffect } from "react";
 
 type useFetchProps = () => Promise<AxiosResponse>;
 
-const useFetch = (request?: useFetchProps) => {
-  const [data, setData] = useState(null);
+type returnedType<T> = [
+  T | undefined,
+  boolean,
+  string,
+  (request?: useFetchProps) => void
+];
+
+function useFetch<T>(request?: useFetchProps): returnedType<T> {
+  const [data, setData] = useState<T>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -12,7 +19,7 @@ const useFetch = (request?: useFetchProps) => {
     setLoading(true);
     request?.()
       .then((res) => setData(res.data))
-      .catch((error) => setError(error))
+      .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
   }
 
@@ -23,6 +30,6 @@ const useFetch = (request?: useFetchProps) => {
   }, []);
 
   return [data, loading, error, fetchNow];
-};
+}
 
 export default useFetch;

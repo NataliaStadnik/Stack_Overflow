@@ -18,7 +18,6 @@ const Layout = () => {
   if (data) {
     dispatch(setAuthTrue());
   }
-
   return (
     <div id="layout" className="layout">
       <h1 className="visually-hidden">Stack Overflow</h1>
@@ -34,6 +33,8 @@ const Layout = () => {
 };
 
 export default Layout;
+
+// исправить первичную загрузку
 
 // const datasAuth = {
 //   username: "NataStadnik",

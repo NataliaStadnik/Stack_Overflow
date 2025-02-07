@@ -9,6 +9,7 @@ import { setAuthFalse } from "../../store/authSlice";
 import { authLogout } from "../../api/auth/authLogout";
 import Loader from "../../Shared/Loader/Loader";
 import { useMutation } from "@tanstack/react-query";
+import { resetUserInfo } from "../../store/userSlice";
 
 const Header = () => {
   const authState = useLoginState();
@@ -18,8 +19,9 @@ const Header = () => {
   const logoutMutation = useMutation({
     mutationFn: authLogout,
     onSuccess() {
-      dispatch(setAuthFalse());
       navigate("/");
+      dispatch(setAuthFalse());
+      dispatch(resetUserInfo());
     },
   });
 
@@ -40,7 +42,12 @@ const Header = () => {
         </Link>
 
         <div className="header__right">
-          <Button onClick={handleClick} classes="btn-header">
+          <Button
+            onClick={handleClick}
+            classes={`btn-header ${
+              logoutMutation.isPending ? "btn-loading" : ""
+            }`}
+          >
             {logoutMutation.isPending ? (
               <Loader type="small" />
             ) : authState ? (
