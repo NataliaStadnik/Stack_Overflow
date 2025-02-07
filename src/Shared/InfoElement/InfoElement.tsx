@@ -3,7 +3,7 @@ import "./infoElement.css";
 
 interface InfoElementProps {
   label: string;
-  value: number;
+  value: string;
 }
 
 const InfoElement: FC<InfoElementProps> = ({ label, value }) => {

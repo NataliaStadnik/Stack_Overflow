@@ -4,29 +4,18 @@ import InfoElement from "../../Shared/InfoElement/InfoElement";
 import Delete from "../../svg/Delete";
 import Logout from "../../svg/Logout";
 import "./accountInfo.css";
-import { accountInfoArr } from "./accountInfoArr";
 import { userType } from "../../api/me/getMe";
 import { FC } from "react";
 import Loader from "../../Shared/Loader/Loader";
-import useLogout from "../../hooks/useLogout";
-import { authLogout } from "../../api/auth/authLogout";
-import { authDelete } from "./authDelete";
+import { useStatistic } from "./useStatistic";
 
 interface AccountInfoProps {
-  data: userType;
+  dataObj: userType;
 }
 
-const AccountInfo: FC<AccountInfoProps> = ({ data }) => {
-  const logoutMutation = useLogout(authLogout);
-  const deleteMutation = useLogout(authDelete);
-
-  const handleLogout = () => {
-    logoutMutation.mutate();
-  };
-
-  const handleDelete = () => {
-    deleteMutation.mutate();
-  };
+const AccountInfo: FC<AccountInfoProps> = ({ dataObj }) => {
+  const { logoutMutation, deleteMutation, statisticObj, statistic } =
+    useStatistic(dataObj);
 
   if (logoutMutation.isPending || deleteMutation.isPending) {
     return <Loader type="big" />;
@@ -37,28 +26,37 @@ const AccountInfo: FC<AccountInfoProps> = ({ data }) => {
       <img className="infos__img" src={User} alt="user photo" />
       <div className="identity">
         <div className="identity__top top-info">
-          <span className="top-info__name">{data.username}</span>
-          <span>Id: {data.id}</span>
-          <span>Role: {data.role}</span>
+          <span className="top-info__name">{dataObj.username}</span>
+          <span>Id: {dataObj.id}</span>
+          <span>Role: {dataObj.role}</span>
         </div>
         <div className="identity__btn">
           <ButtonSvg
-            onClick={handleLogout}
+            onClick={() => logoutMutation.mutate()}
             classes="infos-btn"
             svg={<Logout classes="infos-svg" />}
           />
           <ButtonSvg
-            onClick={handleDelete}
+            onClick={() => deleteMutation.mutate()}
             classes="infos-btn"
             svg={<Delete classes="infos-svg" />}
           />
         </div>
       </div>
-      <ul className="infos-list">
-        {accountInfoArr.map((elem) => (
-          <InfoElement key={elem.id} label={elem.label} value={elem.value} />
-        ))}
-      </ul>
+
+      {statisticObj.isError && (
+        <div className="error-wrap-statistic">
+          <span className="error">Error: {statisticObj.error.message}</span>
+        </div>
+      )}
+
+      {statisticObj.isSuccess && (
+        <ul className="infos-list">
+          {statistic?.map((elem) => (
+            <InfoElement key={elem.id} label={elem.label} value={elem.value} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

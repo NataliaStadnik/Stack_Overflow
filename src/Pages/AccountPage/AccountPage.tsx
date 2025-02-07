@@ -31,7 +31,7 @@ const AccountPage = () => {
               </div>
             }
           />
-          <AccountInfo data={data.data} />
+          <AccountInfo dataObj={data.data} />
           <EditProfile />
         </section>
       );
