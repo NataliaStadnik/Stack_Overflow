@@ -4,19 +4,25 @@ import Router from "./Router";
 import { auth } from "../api/auth/auth";
 import { useDispatch } from "react-redux";
 import { setAuthFalse, setAuthTrue } from "../store/authSlice";
-import useFetch from "../hooks/useFetch";
 import Loader from "../Shared/Loader/Loader";
+import { useQuery } from "@tanstack/react-query";
 
 const Layout = () => {
   const dispatch = useDispatch();
-  const [data, loading, error] = useFetch(auth);
+  const { status } = useQuery({
+    queryFn: () => auth(),
+    queryKey: ["auth"],
+    retry: 1,
+  });
 
-  if (loading) return <Loader type="big" />;
-  if (error) {
-    dispatch(setAuthFalse());
-  }
-  if (data) {
-    dispatch(setAuthTrue());
+  switch (status) {
+    case "pending":
+      return <Loader type="big" />;
+    case "error":
+      dispatch(setAuthFalse());
+      break;
+    case "success":
+      dispatch(setAuthTrue());
   }
   return (
     <div id="layout" className="layout">
@@ -33,10 +39,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-// исправить первичную загрузку
-
-// const datasAuth = {
-//   username: "NataStadnik",
-//   password: "123456789",
-// };

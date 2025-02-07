@@ -7,7 +7,7 @@ export interface InputElementProps {
   placeholder?: string;
   type: string;
   errorMessage?: string;
-  inputProp: UseFormRegisterReturn<string>;
+  inputProp?: UseFormRegisterReturn<string>;
 }
 
 const InputElement: FC<InputElementProps> = ({

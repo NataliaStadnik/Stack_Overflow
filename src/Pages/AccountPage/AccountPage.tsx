@@ -5,8 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import AccountInfo from "../../Widgets/AccountInfo/AccountInfo";
 import EditProfile from "../../Widgets/EditProfile/EditProfile";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../../store/userSlice";
 
 const AccountPage = () => {
+  const dispatch = useDispatch();
   const { data, status, error } = useQuery({
     queryFn: () => getMe(),
     queryKey: ["me"],
@@ -17,6 +20,7 @@ const AccountPage = () => {
     case "pending":
       return <Loader type="big" />;
     case "success":
+      dispatch(setUserInfo(data.data));
       return (
         <section className="account">
           <HeaderSection
