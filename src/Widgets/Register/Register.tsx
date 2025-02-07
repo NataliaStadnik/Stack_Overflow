@@ -12,6 +12,7 @@ import {
 } from "./registerUser";
 import Loader from "../../Shared/Loader/Loader";
 import { registerElementArr } from "./registerElementArr";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -52,11 +53,7 @@ const Register = () => {
           />
         ))}
 
-        {registerMutation.error && (
-          <span className="register--error">
-            {registerMutation.error.message}
-          </span>
-        )}
+        <ErrorMessageFetch mutation={registerMutation} />
 
         <Button
           classes="btn-confirm"

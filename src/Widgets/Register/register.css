@@ -62,12 +62,12 @@
   height: 24px;
 }
 
-.register--error {
+.register--correct {
   width: max-content;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
-  bottom: 55px;
-  color: var(--color-red-error);
+  bottom: 120px;
+  color: rgb(57, 171, 57);
   font-size: 14px;
 }

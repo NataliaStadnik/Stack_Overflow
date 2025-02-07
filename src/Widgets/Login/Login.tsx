@@ -9,6 +9,7 @@ import Loader from "../../Shared/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/authSlice";
 import { loginElementArr } from "./loginElementArr";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -51,11 +52,7 @@ const Login = () => {
           />
         ))}
 
-        {registerMutation.error && (
-          <span className="register--error">
-            {registerMutation.error.message}
-          </span>
-        )}
+        <ErrorMessageFetch mutation={registerMutation} />
 
         <Button
           classes="btn-confirm"

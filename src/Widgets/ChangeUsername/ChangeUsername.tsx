@@ -9,16 +9,12 @@ import {
   createChangeNameForm,
   createChangeNameShema,
 } from "./fetchNewName";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import Loader from "../../Shared/Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import { loginElementArr } from "../Login/loginElementArr";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 
 const ChangeUsername = () => {
-  const userName = useSelector(
-    (state: RootState) => state.userState.value.username
-  );
   const {
     register,
     handleSubmit,
@@ -28,13 +24,12 @@ const ChangeUsername = () => {
     resolver: zodResolver(createChangeNameShema),
   });
 
-  console.log(userName);
   const registerMutation = useMutation({
     mutationFn: changeUserName,
-    onSuccess(data) {
+    onSuccess() {
+      console.log();
       reset();
       queryCLient.invalidateQueries({ queryKey: ["me"] });
-      console.log(data);
     },
   });
 
@@ -45,7 +40,7 @@ const ChangeUsername = () => {
         registerMutation.mutate(data);
       })}
     >
-      <h4 {...register("username")}>Change your username:</h4>
+      <h4>Change your username:</h4>
 
       {loginElementArr.map((elem) => (
         <InputElement
@@ -58,9 +53,11 @@ const ChangeUsername = () => {
         />
       ))}
 
-      {registerMutation.error && (
-        <span className="register--error">
-          {registerMutation.error.message}
+      <ErrorMessageFetch mutation={registerMutation} />
+
+      {registerMutation.isSuccess && (
+        <span className="register--correct">
+          Username successfully updated!"
         </span>
       )}
 

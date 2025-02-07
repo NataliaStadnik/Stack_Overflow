@@ -11,8 +11,14 @@ import {
   createChangePasswordForm,
   createChangePasswordShema,
 } from "./fetchChange";
+import { useNavigate } from "react-router";
+import { setAuthFalse } from "../../store/authSlice";
+import { useDispatch } from "react-redux";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 
 const ChangePassword = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -26,6 +32,9 @@ const ChangePassword = () => {
     mutationFn: changePassword,
     onSuccess() {
       reset();
+      // navigate("/login");
+      // dispatch(setAuthFalse());
+      // queryCLient.invalidateQueries({ queryKey: ["auth"] });
     },
   });
 
@@ -49,9 +58,11 @@ const ChangePassword = () => {
         />
       ))}
 
-      {registerMutation.error && (
-        <span className="register--error">
-          {registerMutation.error.message}
+      <ErrorMessageFetch mutation={registerMutation} />
+
+      {registerMutation.isSuccess && (
+        <span className="register--correct">
+          Password successfully updated!"
         </span>
       )}
 

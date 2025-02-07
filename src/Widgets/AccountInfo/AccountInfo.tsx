@@ -7,12 +7,31 @@ import "./accountInfo.css";
 import { accountInfoArr } from "./accountInfoArr";
 import { userType } from "../../api/me/getMe";
 import { FC } from "react";
+import Loader from "../../Shared/Loader/Loader";
+import useLogout from "../../hooks/useLogout";
+import { authLogout } from "../../api/auth/authLogout";
+import { authDelete } from "./authDelete";
 
 interface AccountInfoProps {
   data: userType;
 }
 
 const AccountInfo: FC<AccountInfoProps> = ({ data }) => {
+  const logoutMutation = useLogout(authLogout);
+  const deleteMutation = useLogout(authDelete);
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  };
+
+  const handleDelete = () => {
+    deleteMutation.mutate();
+  };
+
+  if (logoutMutation.isPending || deleteMutation.isPending) {
+    return <Loader type="big" />;
+  }
+
   return (
     <div className="infos">
       <img className="infos__img" src={User} alt="user photo" />
@@ -23,8 +42,16 @@ const AccountInfo: FC<AccountInfoProps> = ({ data }) => {
           <span>Role: {data.role}</span>
         </div>
         <div className="identity__btn">
-          <ButtonSvg classes="infos-btn" svg={<Logout classes="infos-svg" />} />
-          <ButtonSvg classes="infos-btn" svg={<Delete classes="infos-svg" />} />
+          <ButtonSvg
+            onClick={handleLogout}
+            classes="infos-btn"
+            svg={<Logout classes="infos-svg" />}
+          />
+          <ButtonSvg
+            onClick={handleDelete}
+            classes="infos-btn"
+            svg={<Delete classes="infos-svg" />}
+          />
         </div>
       </div>
       <ul className="infos-list">

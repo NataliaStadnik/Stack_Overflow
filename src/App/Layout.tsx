@@ -7,6 +7,7 @@ import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 
+// смена имени и пароля
 const Layout = () => {
   const dispatch = useDispatch();
   const { status } = useQuery({
