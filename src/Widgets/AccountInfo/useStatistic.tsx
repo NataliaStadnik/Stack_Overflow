@@ -4,7 +4,7 @@ import useLogout from "../../hooks/useLogout";
 import { authDelete } from "./authDelete";
 import { fetchStatistic } from "./fetchStatistic";
 import { getstatisticArr } from "./accountInfoArr";
-import { userType } from "../../api/me/getMe";
+import { userType } from "../Login/authLogin";
 
 export function useStatistic(dataObj: userType) {
   const logoutMutation = useLogout(authLogout);

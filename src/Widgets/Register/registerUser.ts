@@ -3,7 +3,10 @@ import { instance } from "../../api/config";
 
 export const createRegisterShema = z.object({
   username: z.string().min(5, "Username should be at least 5 characters"),
-  password: z.string().min(6, "Password should be at least 6 characters"),
+  password: z.string().regex(
+      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+      "Password must contain at least one lowercase letter, one uppercase letter, one number and one symbol"
+    ),
   confirm: z.string().min(6, "Password should be at least 6 characters"),
 })
 .refine((data) => data.password === data.confirm, {

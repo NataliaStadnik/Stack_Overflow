@@ -13,8 +13,12 @@ import Loader from "../../Shared/Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import { loginElementArr } from "../Login/loginElementArr";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../../store/userSlice";
 
 const ChangeUsername = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -26,8 +30,8 @@ const ChangeUsername = () => {
 
   const registerMutation = useMutation({
     mutationFn: changeUserName,
-    onSuccess() {
-      console.log();
+    onSuccess(data) {
+      dispatch(setUserInfo(data));
       reset();
       queryCLient.invalidateQueries({ queryKey: ["me"] });
     },

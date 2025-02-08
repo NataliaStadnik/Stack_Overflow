@@ -6,11 +6,14 @@ import { useDispatch } from "react-redux";
 import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
+import { setUserInfo } from "../store/userSlice";
 
-// смена имени и пароля
+// исправить отступы ошибки при регистрации
+// исправить отстсупы сообщения при изменении пароля
+
 const Layout = () => {
   const dispatch = useDispatch();
-  const { status } = useQuery({
+  const { status, data } = useQuery({
     queryFn: () => auth(),
     queryKey: ["auth"],
     retry: 1,
@@ -24,6 +27,7 @@ const Layout = () => {
       break;
     case "success":
       dispatch(setAuthTrue());
+      dispatch(setUserInfo(data));
   }
   return (
     <div id="layout" className="layout">

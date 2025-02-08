@@ -8,9 +8,23 @@ export const createLoginShema = z.object({
 
 export type createLoginForm = z.infer<typeof createLoginShema>;
 
-export async function authLogin(data: createLoginForm): Promise<void> {
+
+export const userShema = z.object({
+  id: z.string(),
+  role: z.string(),
+  username: z.string(),
+})
+
+export type userType = z.infer<typeof userShema>;
+
+export async function fetchMe(): Promise<userType> {
+  return (await instance.get(`/me`)
+      .catch((err) => {
+          throw new Error(err.response.data.message)
+        })).data.data
+}
+
+export async function authLogin(data: createLoginForm): Promise<userType> {
     await instance.post('/auth/login', data)
-    .catch((err) => {
-      throw new Error(err.response.data.message)
-    })
+    return fetchMe();
 }

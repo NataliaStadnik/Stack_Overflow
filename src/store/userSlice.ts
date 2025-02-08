@@ -1,16 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { userType } from "../api/me/getMe"
+import { userType } from "../Widgets/Login/authLogin"
 
-export interface userState {
-  value: userType
-}
-
-const initialState: userState = {
-  value: {
-    id: '',
-    role: '',
-    username: ''
-  }
+const initialState: userType = {
+  id: '',
+  role: '',
+  username: ''
 }
 
 export const userSlice = createSlice({
@@ -19,11 +13,15 @@ export const userSlice = createSlice({
 
   reducers: {
     setUserInfo: (state, action: PayloadAction<userType>) => {
-      state.value = action.payload
+      state.id = action.payload.id
+      state.role = action.payload.role
+      state.username = action.payload.username
     },
     resetUserInfo: (state) => {
-      state.value = initialState.value
-    }
+      state.id = initialState.id
+      state.role = initialState.role
+      state.username = initialState.username
+    },
   },
 })
 

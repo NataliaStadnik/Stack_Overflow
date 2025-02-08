@@ -10,10 +10,12 @@ import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/authSlice";
 import { loginElementArr } from "./loginElementArr";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
+import { setUserInfo } from "../../store/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -25,9 +27,10 @@ const Login = () => {
 
   const registerMutation = useMutation({
     mutationFn: authLogin,
-    onSuccess() {
+    onSuccess(data) {
       dispatch(setAuthTrue());
       reset();
+      dispatch(setUserInfo(data));
       navigate("/");
     },
   });

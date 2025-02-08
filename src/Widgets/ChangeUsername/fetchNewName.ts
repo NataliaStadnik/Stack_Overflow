@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { instance } from "../../api/config";
+import { fetchMe, userType } from "../Login/authLogin";
 
 export const createChangeNameShema = z.object({
   username: z.string().min(5, "Username should be at least 5 characters"),
@@ -8,9 +9,7 @@ export const createChangeNameShema = z.object({
 
 export type createChangeNameForm = z.infer<typeof createChangeNameShema>;
 
-export async function changeUserName(data: createChangeNameForm): Promise<void> {
+export async function changeUserName(data: createChangeNameForm): Promise<userType> {
   await instance.patch(`/me`, data)
-    .catch((err) => {
-      throw new Error(err.response.data.message)
-    })
+  return fetchMe();
 }

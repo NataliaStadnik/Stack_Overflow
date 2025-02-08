@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { setAuthFalse } from "../store/authSlice";
 import { queryCLient } from "../api/queryClients";
+import { resetUserInfo } from "../store/userSlice";
 
 type Function = () => Promise<void>;
 
@@ -15,7 +16,7 @@ const useLogout = (fn: Function) => {
     onSuccess() {
       navigate("/");
       dispatch(setAuthFalse());
-      // dispatch(resetUserInfo());
+      dispatch(resetUserInfo());
       queryCLient.invalidateQueries({ queryKey: ["auth"] });
     },
   });
