@@ -9,6 +9,7 @@ import { useStatistic } from "./useStatistic";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { FC } from "react";
+import UserInfo from "../../Shared/UserInfo/UserInfo";
 
 interface AccountInfoProps {
   forPage: "account" | "user";
@@ -27,11 +28,7 @@ const AccountInfo: FC<AccountInfoProps> = ({ forPage }) => {
     <div className="infos">
       <img className="infos__img" src={User} alt="user photo" />
       <div className="identity">
-        <div className="identity__top top-info">
-          <span className="top-info__name">{userData.username}</span>
-          <span>Id: {userData.id}</span>
-          <span>Role: {userData.role}</span>
-        </div>
+        <UserInfo data={userData} />
 
         {forPage === "account" && (
           <div className="identity__btn">

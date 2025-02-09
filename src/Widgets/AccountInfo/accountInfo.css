@@ -50,27 +50,6 @@
   gap: 30px;
 }
 
-.identity__top {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.top-info {
-  color: var(--color-grey);
-  font-style: italic;
-  font-size: 17px;
-  line-height: 23px;
-}
-
-.top-info__name {
-  margin-bottom: 10px;
-  color: black;
-  font-weight: 700;
-  font-size: 25px;
-  line-height: 31px;
-}
-
 .identity__btn {
   display: flex;
   gap: 20px;
