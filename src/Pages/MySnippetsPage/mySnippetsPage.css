@@ -1,0 +1,16 @@
+.no-snippets {
+  padding-top: 20px;
+  margin-bottom: 50px;
+  color: var(--color-grey);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.empty .no-snippets-btn {
+  font-size: 22px;
+  line-height: 30px;
+}

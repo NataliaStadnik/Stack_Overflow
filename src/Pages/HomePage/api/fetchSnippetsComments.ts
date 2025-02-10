@@ -12,7 +12,7 @@ export type OneComment = {
 }
 
 
-export async function fetchSnippetsComments(){
+export async function fetchSnippetsComments():Promise<AllSnippets>{
   const data = await fetchSnippets();
   const clone: AllSnippets = JSON.parse(JSON.stringify(data))
 

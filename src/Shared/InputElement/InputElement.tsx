@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "./inputElement.css";
 import { UseFormRegisterReturn } from "react-hook-form";
 
@@ -8,6 +8,7 @@ export interface InputElementProps {
   type: string;
   errorMessage?: string;
   inputProp?: UseFormRegisterReturn<string>;
+  newValue?: string;
 }
 
 const InputElement: FC<InputElementProps> = ({
@@ -16,7 +17,9 @@ const InputElement: FC<InputElementProps> = ({
   type,
   errorMessage,
   inputProp,
+  newValue = "",
 }) => {
+  const [value, setValue] = useState(newValue);
   return (
     <div className={`inputs-login`}>
       <input
@@ -28,6 +31,8 @@ const InputElement: FC<InputElementProps> = ({
         type={type}
         placeholder={placeholder}
         {...inputProp}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
       {svg}
 

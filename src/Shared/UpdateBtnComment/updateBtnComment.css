@@ -1,0 +1,10 @@
+.comment .comment__update {
+  background-color: transparent;
+  font-size: 12px;
+}
+
+.field__top .register--error {
+  right: 0;
+  top: 10px;
+  font-size: 12px;
+}

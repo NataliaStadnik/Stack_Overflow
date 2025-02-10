@@ -3,12 +3,12 @@ import "./snippetBody.css";
 
 interface SnippetBodyProps {
   classes?: string;
-  code: string;
+  code?: string;
 }
 
 type CodeObjectType = Array<{
   numString: number;
-  code: string;
+  code?: string;
   id: number;
 }>;
 

@@ -23,11 +23,12 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
   const authState = useLoginState();
   const navigate = useNavigate();
   const [href, setHref] = useState(to);
-  useAuthNavigate(to, setHref);
+  useAuthNavigate(`${to}/${dataObj.id}`, setHref);
   const marksStatus = useGetMarks(dataObj.marks);
 
+  // fix comment path
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (path === "/posts") {
+    if (path.includes(`/posts`)) {
       e.preventDefault();
     }
   };
@@ -36,7 +37,9 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
     const mutation = useMutation({
       mutationFn: () => postMark(status, dataObj.id),
       onSuccess() {
-        queryCLient.invalidateQueries({ queryKey: ["snippets"] });
+        queryCLient.invalidateQueries({
+          queryKey: ["snippets"],
+        });
       },
     });
     return mutation;
