@@ -10,6 +10,7 @@ import { setUserInfo } from "../store/userSlice";
 
 // исправить отступы ошибки при регистрации
 // исправить отстсупы сообщения при изменении пароля
+// убрать двойой лоадер
 
 const Layout = () => {
   const dispatch = useDispatch();

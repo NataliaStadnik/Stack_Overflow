@@ -18,7 +18,7 @@ const PostPage = () => {
         classes="edit-snippet"
         children={"Edit snippet"}
       />
-      <Snippet children={<Comment />} />
+      {/* <Snippet children={<Comment />} /> */}
     </section>
   );
 };

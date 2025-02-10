@@ -1,13 +1,13 @@
 import { instance } from "../../api/config"
 import { userType } from "../../Widgets/Login/authLogin"
 
-type Links = {
+export type Links = {
   current: string,
   last: string,
   next: string
 }
 
-type Meta = {
+export type Meta = {
   currentPage: string,
   itemsPerPage: string,
   sortBy: Array<[string]>,

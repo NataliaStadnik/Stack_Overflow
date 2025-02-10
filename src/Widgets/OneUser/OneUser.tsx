@@ -8,7 +8,7 @@ import { userType } from "../Login/authLogin";
 import Loader from "../../Shared/Loader/Loader";
 import { getstatisticArr } from "../AccountInfo/accountInfoArr";
 import InfoElement from "../../Shared/InfoElement/InfoElement";
-import User from "../../assets/img/man.jpg";
+import User from "../../svg/User";
 
 interface OneUserProps {
   dataObj: userType;
@@ -28,7 +28,7 @@ const OneUser: FC<OneUserProps> = ({ dataObj }) => {
 
   return (
     <div className={`one-user ${isSuccess ? "one-user-statistic" : ""}`}>
-      <img className="one-user__img" src={User} alt="user photo" />
+      <User color="grey" classes="one-user__img" />
       <UserInfo data={dataObj} />
 
       {!isSuccess && (
