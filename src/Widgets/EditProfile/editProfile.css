@@ -21,3 +21,8 @@
   gap: 50px;
   width: 100%;
 }
+
+.edit-profile .user-svg {
+  width: 24px;
+  height: 24px;
+}

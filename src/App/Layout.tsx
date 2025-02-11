@@ -7,6 +7,7 @@ import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { setUserInfo } from "../store/userSlice";
+import { Suspense } from "react";
 
 // исправить отступы ошибки при регистрации
 // исправить отстсупы сообщения при изменении пароля
@@ -31,16 +32,18 @@ const Layout = () => {
       dispatch(setUserInfo(data));
   }
   return (
-    <div id="layout" className="layout">
-      <h1 className="visually-hidden">Stack Overflow</h1>
-      <Header />
-      <div className="outer-wrapper">
-        <Menu />
-        <div className="container section section__container">
-          <Router />
+    <Suspense>
+      <div id="layout" className="layout">
+        <h1 className="visually-hidden">Stack Overflow</h1>
+        <Header />
+        <div className="outer-wrapper">
+          <Menu />
+          <div className="container section section__container">
+            <Router />
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

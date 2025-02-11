@@ -1,16 +1,30 @@
 import { Route, Routes } from "react-router";
-import HomePage from "../Pages/HomePage/HomePage";
-import AccountPage from "../Pages/AccountPage/AccountPage";
-import NewQuestionPage from "../Pages/NewQuestionPage/NewQuestionPage";
-import NewSnippetPage from "../Pages/NewSnippetPage/NewSnippetPage";
-import PostPage from "../Pages/PostPage/PostPage";
-import QuestionsPage from "../Pages/QuestionsPage/QuestionsPage";
-import Modal from "../Pages/Modal/Modal";
-import MySnippetsPage from "../Pages/MySnippetsPage/MySnippetsPage";
-import EditSnippetPage from "../Pages/EditSnippetPage/EditSnippetPage";
-import AllUsersPage from "../Pages/AllUsersPage/AllUsersPage";
-import UserPage from "../Pages/UserPage/UserPage";
-import EditQuestionPage from "../Pages/EditQuestionPage/EditQuestionPage";
+import { lazy } from "react";
+
+const HomePage = lazy(() => import("../Pages/HomePage/HomePage"));
+const PostPage = lazy(() => import("../Pages/PostPage/PostPage"));
+const UserPage = lazy(() => import("../Pages/UserPage/UserPage"));
+const AccountPage = lazy(() => import("../Pages/AccountPage/AccountPage"));
+const AllUsersPage = lazy(() => import("../Pages/AllUsersPage/AllUsersPage"));
+const Modal = lazy(() => import("../Pages/Modal/Modal"));
+const MySnippetsPage = lazy(
+  () => import("../Pages/MySnippetsPage/MySnippetsPage")
+);
+const EditSnippetPage = lazy(
+  () => import("../Pages/EditSnippetPage/EditSnippetPage")
+);
+const NewQuestionPage = lazy(
+  () => import("../Pages/NewQuestionPage/NewQuestionPage")
+);
+const EditQuestionPage = lazy(
+  () => import("../Pages/EditQuestionPage/EditQuestionPage")
+);
+const NewSnippetPage = lazy(
+  () => import("../Pages/NewSnippetPage/NewSnippetPage")
+);
+const QuestionsPage = lazy(
+  () => import("../Pages/QuestionsPage/QuestionsPage")
+);
 
 const Router = () => {
   return (

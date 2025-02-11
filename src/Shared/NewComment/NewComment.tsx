@@ -26,7 +26,7 @@ interface NewCommentProps {
   commentString?: string;
   commentId?: string;
 }
-
+//  перенести в виджеты
 const NewComment: FC<NewCommentProps> = ({
   snippetId,
   setStatus,
