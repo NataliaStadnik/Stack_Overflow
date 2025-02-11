@@ -3,8 +3,20 @@ import Favicon from "../../svg/Favicon";
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import Pagination from "../../Widgets/Pagination/Pagination";
 import SnippetsList from "../../Widgets/SnippetsList/SnippetsList";
+import { useQuery } from "@tanstack/react-query";
+import { fetchSnippetsComments } from "./api/fetchSnippetsComments";
+import Loader from "../../Shared/Loader/Loader";
 
 const HomePage = () => {
+  const { error, isError, isSuccess, data, isPending } = useQuery({
+    queryFn: () => fetchSnippetsComments(),
+    queryKey: ["snippets"],
+    retry: 1,
+  });
+
+  if (isPending) {
+    return <Loader type="big" />;
+  }
   return (
     <>
       <HeaderSection
@@ -12,7 +24,13 @@ const HomePage = () => {
         children={<Favicon classes="title-favicon" color="#000" />}
       />
       <Pagination />
-      <SnippetsList />
+      {isError && (
+        <div>
+          <span className="error">Error: {error.message}</span>
+        </div>
+      )}
+
+      {isSuccess && <SnippetsList dataObj={data.data} />}
     </>
   );
 };

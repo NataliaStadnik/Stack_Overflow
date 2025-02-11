@@ -1,20 +1,24 @@
+import "./accountPage.css";
+import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import AccountInfo from "../../Widgets/AccountInfo/AccountInfo";
 import EditProfile from "../../Widgets/EditProfile/EditProfile";
-import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
-import "./accountPage.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const AccountPage = () => {
+  const userName = useSelector((state: RootState) => state.userState.username);
+
   return (
     <section className="account">
       <HeaderSection
         children={
           <div className="account__title">
             <span>Welcome,</span>
-            <span className="welcome">denis</span>
+            <span className="welcome">{userName}</span>
           </div>
         }
       />
-      <AccountInfo />
+      <AccountInfo forPage="account" />
       <EditProfile />
     </section>
   );

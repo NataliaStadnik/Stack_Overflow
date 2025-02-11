@@ -27,7 +27,7 @@ export const menuElements = [
     id: 4,
     label: "My Snippets",
     icon: <Snippet classes="svg-menu" />,
-    to: "/my_snippet",
+    to: "/my_snippets",
   },
   {
     id: 5,

@@ -1,0 +1,39 @@
+.one-user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 48%;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0px 5px 10px 2px rgb(0 0 0 / 20%);
+}
+
+.all-users .infos-list__item {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.one-user__img {
+  width: 80px;
+  height: 80px;
+}
+
+.one-user-statistic {
+  justify-content: space-between;
+}
+
+.all-users .button-medium {
+  position: absolute;
+  bottom: 20%;
+  right: 30px;
+  max-width: 110px;
+}
+
+.error-message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-align: center;
+  font-size: 12px;
+}

@@ -11,10 +11,18 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@reduxjs/toolkit": "^2.5.1",
+    "@tanstack/react-query": "^5.66.0",
+    "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "react-redux": "^9.2.0",
     "react-router": "^7.1.5",
-    "ui-components_innowise": "^1.0.7"
+    "redux-thunk": "^3.1.0",
+    "ui-components_innowise": "^1.0.9",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

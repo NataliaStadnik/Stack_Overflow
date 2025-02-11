@@ -4,38 +4,61 @@ import InfoElement from "../../Shared/InfoElement/InfoElement";
 import Delete from "../../svg/Delete";
 import Logout from "../../svg/Logout";
 import "./accountInfo.css";
+import Loader from "../../Shared/Loader/Loader";
+import { useStatistic } from "./useStatistic";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
+import { FC } from "react";
+import UserInfo from "../../Shared/UserInfo/UserInfo";
 
-const accountInfo = [
-  { id: 0, label: "Rating", value: 1 },
-  { id: 1, label: "Snippets", value: 1 },
-  { id: 2, label: "Comments", value: 0 },
-  { id: 3, label: "Likes", value: 0 },
-  { id: 4, label: "Dislikes", value: 0 },
-  { id: 5, label: "Questions", value: 0 },
-  { id: 6, label: "Correct Answers", value: 0 },
-  { id: 7, label: "Regular Answers", value: 0 },
-];
+interface AccountInfoProps {
+  forPage: "account" | "user";
+}
 
-const AccountInfo = () => {
+const AccountInfo: FC<AccountInfoProps> = ({ forPage }) => {
+  const userData = useSelector((state: RootState) => state.userState);
+  const { logoutMutation, deleteMutation, statisticObj, statistic } =
+    useStatistic(userData);
+
+  if (logoutMutation.isPending || deleteMutation.isPending) {
+    return <Loader type="big" />;
+  }
+
   return (
     <div className="infos">
       <img className="infos__img" src={User} alt="user photo" />
       <div className="identity">
-        <div className="identity__top top-info">
-          <span className="top-info__name">denis</span>
-          <span>Id: 3</span>
-          <span>Role: user</span>
-        </div>
-        <div className="identity__btn">
-          <ButtonSvg classes="infos-btn" svg={<Logout classes="infos-svg" />} />
-          <ButtonSvg classes="infos-btn" svg={<Delete classes="infos-svg" />} />
-        </div>
+        <UserInfo data={userData} />
+
+        {forPage === "account" && (
+          <div className="identity__btn">
+            <ButtonSvg
+              onClick={() => logoutMutation.mutate()}
+              classes="infos-btn"
+              svg={<Logout classes="infos-svg" />}
+            />
+            <ButtonSvg
+              onClick={() => deleteMutation.mutate()}
+              classes="infos-btn"
+              svg={<Delete classes="infos-svg" />}
+            />
+          </div>
+        )}
       </div>
-      <ul className="infos-list">
-        {accountInfo.map((elem) => (
-          <InfoElement key={elem.id} label={elem.label} value={elem.value} />
-        ))}
-      </ul>
+
+      {statisticObj.isError && (
+        <div className="error-wrap-statistic">
+          <span className="error">Error: {statisticObj.error.message}</span>
+        </div>
+      )}
+
+      {statisticObj.isSuccess && (
+        <ul className="infos-list">
+          {statistic?.map((elem) => (
+            <InfoElement key={elem.id} label={elem.label} value={elem.value} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

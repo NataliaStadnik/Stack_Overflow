@@ -11,3 +11,7 @@
   align-items: center;
   gap: 5px;
 }
+
+.snippet__header .comment__update:active {
+  background-color: var(--color-blue);
+}

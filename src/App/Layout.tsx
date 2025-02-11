@@ -1,8 +1,35 @@
 import Header from "../Widgets/Header/Header";
 import Menu from "../Widgets/Menu/Menu";
 import Router from "./Router";
+import { auth } from "../api/auth/auth";
+import { useDispatch } from "react-redux";
+import { setAuthFalse, setAuthTrue } from "../store/authSlice";
+import Loader from "../Shared/Loader/Loader";
+import { useQuery } from "@tanstack/react-query";
+import { setUserInfo } from "../store/userSlice";
+
+// исправить отступы ошибки при регистрации
+// исправить отстсупы сообщения при изменении пароля
+// убрать двойой лоадер
 
 const Layout = () => {
+  const dispatch = useDispatch();
+  const { status, data } = useQuery({
+    queryFn: () => auth(),
+    queryKey: ["auth"],
+    retry: 1,
+  });
+
+  switch (status) {
+    case "pending":
+      return <Loader type="big" />;
+    case "error":
+      dispatch(setAuthFalse());
+      break;
+    case "success":
+      dispatch(setAuthTrue());
+      dispatch(setUserInfo(data));
+  }
   return (
     <div id="layout" className="layout">
       <h1 className="visually-hidden">Stack Overflow</h1>
@@ -17,5 +44,4 @@ const Layout = () => {
   );
 };
 
-// модалка без роутинга?
 export default Layout;

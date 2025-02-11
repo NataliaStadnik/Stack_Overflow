@@ -1,0 +1,14 @@
+.all-users,
+.users {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.all-users-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}

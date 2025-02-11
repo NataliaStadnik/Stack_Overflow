@@ -1,13 +1,17 @@
+import { FC } from "react";
 import Question from "../../Shared/Question/Question";
 import "./allQuestions.css";
+import { AllQuestionsArr } from "../../Pages/QuestionsPage/getAllQuestions";
 
-const arr = [1, 2, 3, 4, 5];
+interface AllQuestionsProps {
+  dataObj: AllQuestionsArr;
+}
 
-const AllQuestions = () => {
+const AllQuestions: FC<AllQuestionsProps> = ({ dataObj }) => {
   return (
     <ul className="question-list">
-      {arr.map((elem) => (
-        <Question key={elem} />
+      {dataObj.map((elem) => (
+        <Question dataObj={elem} key={elem.id} />
       ))}
     </ul>
   );

@@ -36,26 +36,29 @@ img {
   height: auto;
 }
 
-#root {
+:root {
   --color-white: #fff;
   --color-light-white: #ffffffb3;
   --color-blue: #5053f4;
   --color-dark-blue: rgb(32 59 95 / 90%);
   --color-grey: #4e4e4e;
   --color-light-grey: #80808045;
+  --color-red-error: rgb(250, 15, 15);
 }
 
 body {
   font-family: "Play", sans-serif;
   font-weight: 400;
-  color: var(--color-white);
+  color: black;
 }
 
 h1,
 h2,
 h3,
 h4,
-p {
+p,
+pre,
+code {
   margin: 0;
   color: inherit;
 }
@@ -63,7 +66,8 @@ p {
 button,
 input,
 fieldset,
-form {
+form,
+textarea {
   padding: 0;
   border: none;
   border-radius: 0;
@@ -94,6 +98,15 @@ input:active,
 input:focus,
 input:hover,
 input:focus-visible {
+  outline: none;
+  cursor: pointer;
+  outline: none;
+}
+
+textarea:active,
+textarea:focus,
+textarea:hover,
+textarea:focus-visible {
   outline: none;
   cursor: pointer;
   outline: none;

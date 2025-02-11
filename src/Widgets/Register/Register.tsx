@@ -1,59 +1,73 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Button } from "ui-components_innowise";
 import InputElement from "../../Shared/InputElement/InputElement";
-import Key from "../../svg/Key";
-import User from "../../svg/User";
 import "./register.css";
-import { FC } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import {
+  createRegisterForm,
+  createRegisterShema,
+  registerUser,
+} from "./registerUser";
+import Loader from "../../Shared/Loader/Loader";
+import { registerElementArr } from "./registerElementArr";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 
-interface RegisterProps {
-  type: string;
-}
+const Register = () => {
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<createRegisterForm>({
+    resolver: zodResolver(createRegisterShema),
+  });
 
-const Register: FC<RegisterProps> = ({ type }) => {
+  const registerMutation = useMutation({
+    mutationFn: registerUser,
+    onSuccess() {
+      reset();
+      navigate("/login");
+    },
+  });
+
   return (
     <div className="modal">
-      <h2 className="title">
-        {`Sign ${type === "register" ? "up" : "in"} to Codelang`}
-      </h2>
-      <form className="modal-form">
-        <InputElement
-          svg={<User classes="user-svg" color="black" />}
-          placeholder={"User name"}
-          type={"text"}
-        />
-        <InputElement
-          svg={<Key />}
-          placeholder={"Password"}
-          type={"password"}
-        />
-
-        {type === "register" && (
+      <h2 className="title">Sign up to Codelang</h2>
+      <form
+        className="modal-form"
+        onSubmit={handleSubmit((data) => {
+          registerMutation.mutate(data);
+        })}
+      >
+        {registerElementArr.map((elem) => (
           <InputElement
-            svg={<Key />}
-            placeholder={"Confirm password"}
-            type={"password"}
+            key={elem.id}
+            svg={elem.svg}
+            placeholder={elem.placeholder}
+            type={elem.type}
+            inputProp={{ ...register(elem.name) }}
+            errorMessage={errors[elem.name]?.message}
           />
-        )}
+        ))}
 
-        <Button classes="btn-confirm" children={"Confirm"} />
+        <ErrorMessageFetch mutation={registerMutation} />
+
+        <Button
+          classes="btn-confirm"
+          children={
+            registerMutation.isPending ? <Loader type="small" /> : "Confirm"
+          }
+        />
       </form>
 
       <div className="sign">
-        {type === "login" && (
-          <Link className="sign__link" to={"/register"}>
-            Create an account
-          </Link>
-        )}
-
-        {type === "register" && (
-          <>
-            <p className="sign__text">Already have an account?</p>
-            <Link className="sign__link" to={"/login"}>
-              Sign in
-            </Link>
-          </>
-        )}
+        <p className="sign__text">Already have an account?</p>
+        <Link className="sign__link" to={"/login"}>
+          Sign in
+        </Link>
       </div>
     </div>
   );

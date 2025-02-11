@@ -13,3 +13,18 @@
   line-height: 22px;
   background-color: rgb(57, 171, 57);
 }
+
+.post-page .addcomment-snippet {
+  align-self: flex-start;
+}
+
+.commemts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-page-btn__wrapper {
+  display: flex;
+  justify-content: space-between;
+}

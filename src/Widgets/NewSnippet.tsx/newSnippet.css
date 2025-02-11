@@ -3,8 +3,13 @@
 }
 
 .new-snippet {
+  position: relative;
   width: 100%;
   padding-top: 30px;
+}
+
+.new-snippet .register--correct {
+  bottom: -23px;
 }
 
 .snippet-form {
@@ -38,4 +43,19 @@
   width: 50%;
   padding: 15px;
   font-size: 18px;
+}
+
+.new-snippet__code .inputs-login {
+  width: 100%;
+  height: 100%;
+}
+
+.new-snippet__code .inputs-login__field {
+  border: none;
+  border-radius: 0;
+  padding: 4px 8px;
+}
+
+.new-snippet__code .inputs-text--error {
+  top: 30px;
 }

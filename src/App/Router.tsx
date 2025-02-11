@@ -16,18 +16,19 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="posts" element={<PostPage />} />
-      <Route path="/my_snippet" element={<MySnippetsPage />} />
-      <Route path="/edit_snippet" element={<EditSnippetPage />} />
+      <Route path="/posts/:id" element={<PostPage />} />
+      <Route path="/my_snippets/posts/:id" element={<PostPage />} />
+      <Route path="/my_snippets" element={<MySnippetsPage />} />
+      <Route path="/edit_snippet/:id" element={<EditSnippetPage />} />
       <Route path="/account" element={<AccountPage />} />
       <Route path="/user" element={<UserPage />} />
       <Route path="/all_users" element={<AllUsersPage />} />
       <Route path="/new_question" element={<NewQuestionPage />} />
-      <Route path="/edit_question" element={<EditQuestionPage />} />
+      <Route path="/edit_question/:id" element={<EditQuestionPage />} />
       <Route path="/new_snippet" element={<NewSnippetPage />} />
       <Route path="/questions" element={<QuestionsPage />} />
-      <Route path="/register" element={<Modal type={"register"} />} />
-      <Route path="/login" element={<Modal type={"login"} />} />
+      <Route path="/register" element={<Modal type="register" />} />
+      <Route path="/login" element={<Modal type="login" />} />
     </Routes>
   );
 };

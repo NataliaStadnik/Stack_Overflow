@@ -84,3 +84,8 @@
   color: white;
   background-color: rgb(129 178 245 / 76%);
 }
+
+.header .btn-loading {
+  background-color: #3b82f680;
+  width: 100px;
+}
