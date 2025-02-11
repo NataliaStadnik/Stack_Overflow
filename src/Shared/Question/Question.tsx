@@ -14,7 +14,7 @@ const Question: FC<QuestionProps> = ({ dataObj }) => {
   const navigate = useNavigate();
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate("/edit_question");
+    navigate(`/edit_question/${dataObj.id}`);
   };
 
   return (

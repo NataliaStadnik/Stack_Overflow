@@ -12,35 +12,48 @@ import {
 } from "./postQuestion";
 import Loader from "../../Shared/Loader/Loader";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
-import { useRef, useState } from "react";
+import { FC, useState } from "react";
 import { queryCLient } from "../../api/queryClients";
+import { updateQuestion } from "./updateQuestion";
+
+interface CreateQuestionProps {
+  newTitle?: string;
+  newDescr?: string;
+  newCode?: string;
+  updateID?: string;
+}
 
 // не очищается форма
-const CreateQuestion = () => {
-  const [code, setCode] = useState("");
-  const ref = useRef(null);
+const CreateQuestion: FC<CreateQuestionProps> = ({
+  newTitle = "",
+  newCode = "",
+  newDescr = "",
+  updateID = "",
+}) => {
+  const [code, setCode] = useState(newCode);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    resetField,
   } = useForm<createPostQuestionForm>({
     resolver: zodResolver(createPostQuestionShema),
   });
 
   const registerMutation = useMutation({
-    mutationFn: (data: createPostQuestionForm) => postQuestion(data, code),
+    mutationFn: (data: createPostQuestionForm) =>
+      updateID
+        ? updateQuestion(data, code, updateID)
+        : postQuestion(data, code),
     onSuccess() {
       reset();
-      resetField("title");
       queryCLient.invalidateQueries({ queryKey: ["questions"] });
     },
   });
 
   return (
     <form
-      ref={ref}
       className="ask-form"
       onSubmit={handleSubmit((data) => {
         registerMutation.mutate(data);
@@ -52,6 +65,7 @@ const CreateQuestion = () => {
         placeholder="Question title"
         inputProp={{ ...register("title") }}
         errorMessage={errors["title"]?.message}
+        newValue={newTitle}
       />
       <InputElement
         classes="ask-form__input"
@@ -59,6 +73,7 @@ const CreateQuestion = () => {
         placeholder="Question description"
         inputProp={{ ...register("description") }}
         errorMessage={errors["description"]?.message}
+        newValue={newDescr}
       />
 
       <div className="ask-form__body">
@@ -70,7 +85,7 @@ const CreateQuestion = () => {
 
       {registerMutation.isSuccess && (
         <span className="register--correct">
-          Question created successfully!"
+          Question {updateID ? "updated" : "created"} successfully!"
         </span>
       )}
 

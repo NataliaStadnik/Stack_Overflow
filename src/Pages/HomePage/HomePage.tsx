@@ -8,13 +8,13 @@ import { fetchSnippetsComments } from "./api/fetchSnippetsComments";
 import Loader from "../../Shared/Loader/Loader";
 
 const HomePage = () => {
-  const { error, isError, isSuccess, data, isFetching } = useQuery({
+  const { error, isError, isSuccess, data, isPending } = useQuery({
     queryFn: () => fetchSnippetsComments(),
     queryKey: ["snippets"],
     retry: 1,
   });
 
-  if (isFetching) {
+  if (isPending) {
     return <Loader type="big" />;
   }
   return (

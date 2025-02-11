@@ -2,8 +2,8 @@ import { instance } from "../../api/config"
 import { z } from "zod";
 
 export const createPostQuestionShema = z.object({
-  title: z.string().min(1, "Title should be at least 5 characters"),
-  description: z.string().min(1, "Description should be at least 5 characters"),
+  title: z.string().min(1, "Title should be at least 1 characters"),
+  description: z.string().min(1, "Description should be at least 1 characters"),
 });
 
 export type createPostQuestionForm = z.infer<typeof createPostQuestionShema>;

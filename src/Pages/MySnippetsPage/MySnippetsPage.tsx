@@ -14,13 +14,13 @@ const MySnippetsPage = () => {
   const myId = useSelector((state: RootState) => state.userState.id);
   const navigate = useNavigate();
 
-  const { error, isError, isSuccess, data, isFetching } = useQuery({
+  const { error, isError, isSuccess, data, isPending } = useQuery({
     queryFn: () => fetchUserSnippets(myId),
     queryKey: [`snippets/${myId}`],
     retry: 1,
   });
 
-  if (isFetching) {
+  if (isPending) {
     return <Loader type="big" />;
   }
 

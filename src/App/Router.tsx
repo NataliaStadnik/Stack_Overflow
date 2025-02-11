@@ -24,7 +24,7 @@ const Router = () => {
       <Route path="/user" element={<UserPage />} />
       <Route path="/all_users" element={<AllUsersPage />} />
       <Route path="/new_question" element={<NewQuestionPage />} />
-      <Route path="/edit_question" element={<EditQuestionPage />} />
+      <Route path="/edit_question/:id" element={<EditQuestionPage />} />
       <Route path="/new_snippet" element={<NewSnippetPage />} />
       <Route path="/questions" element={<QuestionsPage />} />
       <Route path="/register" element={<Modal type="register" />} />
