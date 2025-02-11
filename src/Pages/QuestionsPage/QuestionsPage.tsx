@@ -4,10 +4,8 @@ import Pagination from "../../Widgets/Pagination/Pagination";
 import "./questionsPage.css";
 import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllAnswers } from "../../Widgets/AllQuestions/fetchAllAnswers";
 import Loader from "../../Shared/Loader/Loader";
-import { useEffect } from "react";
-import { instance } from "../../api/config";
+import { getAllQuestions } from "./getAllQuestions";
 
 const QuestionsPage = () => {
   const navigate = useNavigate();
@@ -16,15 +14,9 @@ const QuestionsPage = () => {
     navigate("/new_question");
   };
 
-  // useEffect(() => {
-  //   instance.get("/snippets").then((res) => {
-  //     console.log(res);
-  //   });
-  // });
-
   const { error, isError, isSuccess, isPending, data } = useQuery({
-    queryFn: () => fetchAllAnswers(),
-    queryKey: ["answers"],
+    queryFn: () => getAllQuestions(),
+    queryKey: ["questions"],
     retry: 1,
   });
 
@@ -32,6 +24,7 @@ const QuestionsPage = () => {
     return <Loader type="big" />;
   }
 
+  console.log(data);
   return (
     <>
       <Pagination />
@@ -45,7 +38,7 @@ const QuestionsPage = () => {
           <span className="error">Error: {error.message}</span>
         </div>
       )}
-      {isSuccess && <AllQuestions />}
+      {isSuccess && <AllQuestions dataObj={data.data} />}
     </>
   );
 };

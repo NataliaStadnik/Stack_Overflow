@@ -42,6 +42,7 @@ const Comment: FC<CommentProps> = ({ comment }) => {
           commentString={comment.content}
           setStatus={setStatus}
           snippetId={locationId}
+          commentId={comment.id}
         />
       )}
     </li>

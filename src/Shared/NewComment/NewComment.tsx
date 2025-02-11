@@ -17,17 +17,21 @@ import InputElement from "../InputElement/InputElement";
 import Message from "../../svg/Message";
 import ButtonSvg from "../ButtonSvg/ButtonSvg";
 import Close from "../../svg/Close";
+import { updateComment } from "./updateComment";
+import ErrorMessageFetch from "../ErrorMessageFetch/ErrorMessageFetch";
 
 interface NewCommentProps {
   snippetId: string;
   setStatus: (a: boolean) => void;
   commentString?: string;
+  commentId?: string;
 }
 
 const NewComment: FC<NewCommentProps> = ({
   snippetId,
   setStatus,
   commentString,
+  commentId = "",
 }) => {
   const myUsername = useSelector(
     (state: RootState) => state.userState.username
@@ -42,9 +46,13 @@ const NewComment: FC<NewCommentProps> = ({
   });
 
   const registerMutation = useMutation({
-    mutationFn: commentPost,
+    mutationFn: commentString
+      ? (data: createCommentForm) => updateComment(data, commentId)
+      : commentPost,
     onSuccess() {
-      queryCLient.invalidateQueries({ queryKey: [`snippets/${snippetId}}`] });
+      queryCLient.invalidateQueries({
+        queryKey: [`snippets/${snippetId}}`],
+      });
       setStatus(false);
     },
   });
@@ -53,16 +61,22 @@ const NewComment: FC<NewCommentProps> = ({
     <form
       className={`comment`}
       onSubmit={handleSubmit((data) => {
-        registerMutation.mutate(data);
+        return registerMutation.mutate(data);
       })}
     >
       <div className={`comment__field comment__input`}>
+        {registerMutation.isError && (
+          <ErrorMessageFetch mutation={registerMutation} />
+        )}
+
         <ButtonSvg
           classes="close-btn"
           svg={<Close classes="close-comment-svg" color="grey" />}
           onClick={() => setStatus(false)}
         />
+
         <p className="comment__text">{myUsername}</p>
+
         <InputElement
           placeholder="Comment..."
           svg={<Message classes="user-svg" color="#5053f4" />}
@@ -71,6 +85,7 @@ const NewComment: FC<NewCommentProps> = ({
           errorMessage={errors["content"]?.message}
           newValue={commentString}
         />
+
         <input
           className="visually-hidden"
           type="text"

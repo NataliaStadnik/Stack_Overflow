@@ -9,6 +9,7 @@ export interface InputElementProps {
   errorMessage?: string;
   inputProp?: UseFormRegisterReturn<string>;
   newValue?: string;
+  classes?: string;
 }
 
 const InputElement: FC<InputElementProps> = ({
@@ -18,16 +19,17 @@ const InputElement: FC<InputElementProps> = ({
   errorMessage,
   inputProp,
   newValue = "",
+  classes = "",
 }) => {
   const [value, setValue] = useState(newValue);
   return (
     <div className={`inputs-login`}>
       <input
-        className={
+        className={`${
           !errorMessage
             ? "inputs-login__field"
             : "inputs-login__field inputs-login--error"
-        }
+        } ${classes}`}
         type={type}
         placeholder={placeholder}
         {...inputProp}
