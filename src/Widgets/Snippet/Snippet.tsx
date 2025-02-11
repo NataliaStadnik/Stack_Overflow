@@ -14,10 +14,7 @@ const Snippet: FC<SnippetProps> = ({ children, dataObj }) => {
   return (
     <>
       <article className="snippet__wrapper">
-        <SnippetHeader
-          username={dataObj.user.username}
-          language={dataObj.language}
-        />
+        <SnippetHeader dataObj={dataObj} />
         <SnippetBody code={dataObj.code} />
         <SnippetFooter dataObj={dataObj} />
       </article>

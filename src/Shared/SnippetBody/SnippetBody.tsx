@@ -4,6 +4,9 @@ import "./snippetBody.css";
 interface SnippetBodyProps {
   classes?: string;
   code?: string;
+  forNewSnippet?: boolean;
+  value?: string;
+  setValue?: (a: string) => void;
 }
 
 type CodeObjectType = Array<{
@@ -12,7 +15,13 @@ type CodeObjectType = Array<{
   id: number;
 }>;
 
-const SnippetBody: FC<SnippetBodyProps> = ({ classes = "", code = "" }) => {
+const SnippetBody: FC<SnippetBodyProps> = ({
+  classes = "",
+  code = "",
+  forNewSnippet = false,
+  value,
+  setValue,
+}) => {
   const codeArray: CodeObjectType = [];
   code.split("\n").map((elem, index) => {
     const obj = {
@@ -36,7 +45,16 @@ const SnippetBody: FC<SnippetBodyProps> = ({ classes = "", code = "" }) => {
       <div className="snippet-text code-text">
         {codeArray.map((elem) => (
           <pre key={elem.id}>
-            <code className="codebase__text">{elem.code}</code>
+            {forNewSnippet ? (
+              <input
+                type="text"
+                className="code-input"
+                value={value}
+                onChange={(e) => setValue && setValue(e.target.value)}
+              />
+            ) : (
+              <code className="codebase__text">{elem.code}</code>
+            )}
           </pre>
         ))}
       </div>

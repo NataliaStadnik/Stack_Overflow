@@ -1,13 +1,10 @@
 import { Button } from "ui-components_innowise";
 import "./postPage.css";
-import { useNavigate } from "react-router";
 import Comment from "../../Shared/Comment/Comment";
 import Snippet from "../../Widgets/Snippet/Snippet";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
 import { fetchComments } from "../HomePage/api/fetchComments";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
 import { useState } from "react";
 import NewComment from "../../Shared/NewComment/NewComment";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
@@ -15,14 +12,8 @@ import useLastIdLocation from "../../hooks/useLastIdLocation";
 // not update likes/dislikes
 
 const PostPage = () => {
-  const myID = useSelector((state: RootState) => state.userState.id);
   const locationId = useLastIdLocation();
-  const navigate = useNavigate();
   const [status, setStatus] = useState(false);
-
-  const handleClick = () => {
-    navigate("/edit_snippet");
-  };
 
   const handleAddComment = () => {
     setStatus(true);
@@ -44,18 +35,13 @@ const PostPage = () => {
 
   return (
     <section className="post-page">
-      {data?.user.id === myID && (
+      <div className="post-page-btn__wrapper">
         <Button
-          onClick={handleClick}
-          classes="edit-snippet"
-          children={"Edit snippet"}
+          onClick={handleAddComment}
+          classes="edit-snippet addcomment-snippet"
+          children={"Add comment"}
         />
-      )}
-      <Button
-        onClick={handleAddComment}
-        classes="edit-snippet addcomment-snippet"
-        children={"Add comment"}
-      />
+      </div>
 
       {isError && (
         <div>

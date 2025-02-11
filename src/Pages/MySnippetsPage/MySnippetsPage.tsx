@@ -10,23 +10,21 @@ import { fetchUserSnippets } from "./fetchUserSnippets";
 import { useNavigate } from "react-router";
 import { Button } from "ui-components_innowise";
 
-//  роутинг на коменты не работает
 const MySnippetsPage = () => {
   const myId = useSelector((state: RootState) => state.userState.id);
   const navigate = useNavigate();
 
-  const { error, isError, isSuccess, isPending, data } = useQuery({
+  const { error, isError, isSuccess, data, isFetching } = useQuery({
     queryFn: () => fetchUserSnippets(myId),
-    queryKey: ["snippets"],
+    queryKey: [`snippets/${myId}`],
     retry: 1,
   });
 
-  console.log(data);
-  if (isPending) {
+  if (isFetching) {
     return <Loader type="big" />;
   }
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate("/new_snippet");
   };

@@ -1,0 +1,11 @@
+.section__edit-snippet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section__edit-snippet .delete-snippet {
+  align-self: flex-end;
+  background-color: var(--color-light-grey);
+  color: var(--color-dark-blue);
+}

@@ -21,7 +21,7 @@
     "react-redux": "^9.2.0",
     "react-router": "^7.1.5",
     "redux-thunk": "^3.1.0",
-    "ui-components_innowise": "^1.0.7",
+    "ui-components_innowise": "^1.0.9",
     "zod": "^3.24.1"
   },
   "devDependencies": {

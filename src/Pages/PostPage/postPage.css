@@ -23,3 +23,8 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.post-page-btn__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
