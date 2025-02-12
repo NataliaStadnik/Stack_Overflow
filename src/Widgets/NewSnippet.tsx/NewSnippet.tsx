@@ -9,6 +9,8 @@ import { FC, useState } from "react";
 import { updateSnippet } from "../../api/snippets/updateSnippet";
 import { postNewSnippet } from "../../api/snippets/postNewSnippet";
 import { getLanguages } from "../../api/snippets/getLanguages";
+import { queryCLient } from "../../api/queryClients";
+import useLastIdLocation from "../../hooks/useLastIdLocation";
 
 interface NewSnippetProps {
   values?: string;
@@ -23,6 +25,7 @@ const NewSnippet: FC<NewSnippetProps> = ({
   update = false,
   snippetID = "",
 }) => {
+  const id = useLastIdLocation();
   const [select, setSelect] = useState(values);
   const [value, setValue] = useState(selects);
 
@@ -32,8 +35,11 @@ const NewSnippet: FC<NewSnippetProps> = ({
         ? updateSnippet({ code: value, language: select }, snippetID)
         : postNewSnippet({ code: value, language: select }),
     onSuccess() {
-      setSelect("");
-      setValue("");
+      queryCLient.invalidateQueries({
+        queryKey: [`snippets/${id}}`],
+      });
+      // setSelect("");
+      // setValue("");
     },
   });
 
@@ -82,6 +88,8 @@ const NewSnippet: FC<NewSnippetProps> = ({
           setValue={setValue}
           forNewSnippet
           classes="new-snippet__code"
+          language={select}
+          readonly={update && false}
         />
 
         {registerMutation.isSuccess && (

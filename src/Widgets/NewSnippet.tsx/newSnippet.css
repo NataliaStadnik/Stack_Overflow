@@ -26,9 +26,9 @@
 }
 
 .new-snippet .new-snippet__code {
-  height: 300px;
-  border-left: 1px solid var(--color-light-grey);
-  border-right: 1px solid var(--color-light-grey);
+  height: 40vh;
+  /* border-left: 1px solid var(--color-light-grey);
+  border-right: 1px solid var(--color-light-grey); */
 }
 
 .code-title {
