@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
 import Arrow from "../../svg/Arrow";
 import "./pagination.css";
@@ -12,6 +12,7 @@ interface PaginationProps {
 
 const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
   const [params, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState(currentPage);
 
   const IncreasePage = () => {
     const num = (Number(params.get("page")) + 1).toString();
@@ -23,6 +24,11 @@ const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
     setSearchParams({ page: num });
   };
 
+  const handleChange = (num: string) => {
+    setValue(num);
+    setSearchParams({ page: num });
+  };
+
   return (
     <div className="pagination">
       <ButtonSvg
@@ -30,7 +36,12 @@ const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
         svg={<Arrow classes="arrow-pag arrow-pag-left" color="#00000054" />}
         disabled={+currentPage === 1}
       />
-      <div className="page-number">{currentPage}</div>
+      <input
+        className="page-number"
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
+        onBlur={() => handleChange(currentPage)}
+      />
       <ButtonSvg
         onClick={IncreasePage}
         svg={<Arrow classes="arrow-pag" color="#00000054" />}

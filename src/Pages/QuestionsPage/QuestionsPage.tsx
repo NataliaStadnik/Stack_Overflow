@@ -48,6 +48,7 @@ const QuestionsPage = () => {
         classes="ask-question"
         children={"Ask question"}
       />
+
       {isError && (
         <div>
           <span className="error">Error: {error.message}</span>

@@ -13,6 +13,7 @@ import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import usePages from "../../hooks/usePages";
 
+//  не обновляются лайки
 const MySnippetsPage = () => {
   const [page, setPage] = useState("1");
 
@@ -24,6 +25,7 @@ const MySnippetsPage = () => {
       queryFn: () => fetchUserSnippets(myId, page),
       queryKey: [`snippets/${myId}`],
       retry: 1,
+      // notifyOnChangeProps: [data],
     });
 
   usePages({ page, setPage, refetch });
@@ -34,7 +36,7 @@ const MySnippetsPage = () => {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate("/new_snippet");
+    navigate("/snippet/new");
   };
 
   return (

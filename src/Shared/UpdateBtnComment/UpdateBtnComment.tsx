@@ -7,6 +7,7 @@ import Loader from "../Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 import ErrorMessageFetch from "../ErrorMessageFetch/ErrorMessageFetch";
+import { useLocation } from "react-router";
 
 interface UpdateBtnCommentProps {
   commentId: string;
@@ -18,6 +19,7 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
   setStatus,
 }) => {
   const locationId = useLastIdLocation();
+  const location = useLocation();
 
   const deleteMutation = useMutation({
     mutationFn: () => deleteComment(commentId),
@@ -26,13 +28,9 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
     },
   });
 
-  const handleDelete = () => {
-    deleteMutation.mutate();
-  };
-
-  const handleEdit = () => {
-    setStatus(true);
-  };
+  if (location.pathname.includes("answers")) {
+    return;
+  }
 
   return (
     <div>
@@ -44,14 +42,14 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
         size="small"
         variant="text"
         children={"Edit"}
-        onClick={handleEdit}
+        onClick={() => setStatus(true)}
       />
       <Button
         classes="comment__update"
         size="small"
         variant="text"
         children={deleteMutation.isPending ? <Loader type="small" /> : "Delete"}
-        onClick={handleDelete}
+        onClick={() => deleteMutation.mutate()}
       />
     </div>
   );

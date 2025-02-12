@@ -19,19 +19,23 @@ import {
   createCommentShema,
 } from "../../api/comments/commentPost";
 import { updateComment } from "../../api/comments/updateComment";
+import { postAnswers } from "../../api/answers/postAnswers";
 
 interface NewCommentProps {
-  snippetId: string;
+  snippetId?: string;
   setStatus: (a: boolean) => void;
   commentString?: string;
   commentId?: string;
+  answerId?: string;
 }
+
 //  перенести в виджеты
 const NewComment: FC<NewCommentProps> = ({
   snippetId,
   setStatus,
   commentString,
   commentId = "",
+  answerId = "",
 }) => {
   const myUsername = useSelector(
     (state: RootState) => state.userState.username
@@ -57,17 +61,33 @@ const NewComment: FC<NewCommentProps> = ({
     },
   });
 
+  const answerMutation = useMutation({
+    mutationFn: postAnswers,
+    onSuccess() {
+      queryCLient.invalidateQueries({
+        queryKey: [`/questions/${answerId}`],
+      });
+      setStatus(false);
+    },
+  });
+
   return (
     <form
       className={`comment`}
       onSubmit={handleSubmit((data) => {
-        return registerMutation.mutate(data);
+        if (snippetId) {
+          return registerMutation.mutate(data);
+        }
+        if (answerId) {
+          return answerMutation.mutate(data);
+        }
       })}
     >
       <div className={`comment__field comment__input`}>
-        {registerMutation.isError && (
-          <ErrorMessageFetch mutation={registerMutation} />
-        )}
+        {registerMutation.isError ||
+          (answerMutation.isError && (
+            <ErrorMessageFetch mutation={registerMutation} />
+          ))}
 
         <ButtonSvg
           classes="close-btn"
@@ -89,14 +109,20 @@ const NewComment: FC<NewCommentProps> = ({
         <input
           className="visually-hidden"
           type="text"
-          value={snippetId}
+          value={snippetId || answerId}
           {...register("snippetId")}
         />
       </div>
 
       <Button
         classes="comment-send"
-        children={registerMutation.isPending ? <Loader type="small" /> : "Send"}
+        children={
+          registerMutation.isPending || answerMutation.isPending ? (
+            <Loader type="small" />
+          ) : (
+            "Send"
+          )
+        }
       />
     </form>
   );

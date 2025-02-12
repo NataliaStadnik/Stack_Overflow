@@ -15,10 +15,6 @@ const PostPage = () => {
   const locationId = useLastIdLocation();
   const [status, setStatus] = useState(false);
 
-  const handleAddComment = () => {
-    setStatus(true);
-  };
-
   const { error, isError, isSuccess, isPending, data } = useQuery({
     queryFn: () => fetchComments(locationId),
     queryKey: [`snippets/${locationId}}`],
@@ -37,7 +33,7 @@ const PostPage = () => {
     <section className="post-page">
       <div className="post-page-btn__wrapper">
         <Button
-          onClick={handleAddComment}
+          onClick={() => setStatus(true)}
           classes="edit-snippet addcomment-snippet"
           children={"Add comment"}
         />

@@ -12,7 +12,9 @@ const AllQuestions: FC<AllQuestionsProps> = ({ dataObj, classes = "" }) => {
   return (
     <ul className={`question-list ${classes}`}>
       {dataObj.map((elem) => (
-        <Question dataObj={elem} key={elem.id} />
+        <li key={elem.id} className="questions-list__item">
+          <Question dataObj={elem} />
+        </li>
       ))}
     </ul>
   );

@@ -6,7 +6,6 @@ import "./editQuestionPage.css";
 import { getOneQuestion } from "../../api/questions/getOneQuestion";
 import Loader from "../../Shared/Loader/Loader";
 
-// не идет запрос
 const EditQuestionPage = () => {
   const id = useLastIdLocation();
 

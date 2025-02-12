@@ -10,10 +10,17 @@ export type AllQuestionsObject = {
 
 export type AllQuestionsArr = Array<OneQuestion>
 
-export type OneAnswer = undefined
+export type OneAnswer = {
+  id: string,
+  content: string,
+  isCorrect: false,
+  user: userType
+}
+
+export type AnswersArray = Array<OneAnswer>
 
 export type OneQuestion = {
-  answers: Array<OneAnswer>,
+  answers: AnswersArray,
   attachedCode: string,
   description: string,
   id: string,

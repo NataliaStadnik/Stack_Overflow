@@ -25,6 +25,7 @@ const NewSnippetPage = lazy(
 const QuestionsPage = lazy(
   () => import("../Pages/QuestionsPage/QuestionsPage")
 );
+const Answers = lazy(() => import("../Pages/Answers/Answers"));
 
 const Router = () => {
   return (
@@ -40,6 +41,8 @@ const Router = () => {
       <Route path="/questions" element={<QuestionsPage />} />
       <Route path="/questions/new" element={<NewQuestionPage />} />
       <Route path="/questions/:id" element={<EditQuestionPage />} />
+
+      <Route path="/answers/:id" element={<Answers />} />
 
       <Route path="/snippets/me" element={<MySnippetsPage />} />
       <Route path="/snippet/edit/:id" element={<EditSnippetPage />} />
