@@ -1,4 +1,4 @@
-import { instance } from "../../api/config"
+import { instance } from "../config"
 import { createNewSnippetForm } from "./postNewSnippet"
 
 export async function updateSnippet(data: createNewSnippetForm, id:string) {

@@ -1,4 +1,4 @@
-import { instance } from "../../api/config";
+import { instance } from "../config";
 
 export async function deleteComment(id: string): Promise<void> {
   return await instance.delete(`/comments/${id}`)

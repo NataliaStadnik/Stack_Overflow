@@ -29,20 +29,24 @@ const QuestionsPage = lazy(
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/posts/:id" element={<PostPage />} />
-      <Route path="/my_snippets/posts/:id" element={<PostPage />} />
-      <Route path="/my_snippets" element={<MySnippetsPage />} />
-      <Route path="/edit_snippet/:id" element={<EditSnippetPage />} />
-      <Route path="/account" element={<AccountPage />} />
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/all_users" element={<AllUsersPage />} />
-      <Route path="/new_question" element={<NewQuestionPage />} />
-      <Route path="/edit_question/:id" element={<EditQuestionPage />} />
-      <Route path="/new_snippet" element={<NewSnippetPage />} />
-      <Route path="/questions" element={<QuestionsPage />} />
       <Route path="/register" element={<Modal type="register" />} />
       <Route path="/login" element={<Modal type="login" />} />
+
+      <Route path="/" element={<HomePage />} />
+      <Route path="/users" element={<AllUsersPage />} />
+      <Route path="/me" element={<AccountPage />} />
+      <Route path="/user" element={<UserPage />} />
+
+      <Route path="/questions" element={<QuestionsPage />} />
+      <Route path="/questions/new" element={<NewQuestionPage />} />
+      <Route path="/questions/:id" element={<EditQuestionPage />} />
+
+      <Route path="/snippets/me" element={<MySnippetsPage />} />
+      <Route path="/snippet/edit/:id" element={<EditSnippetPage />} />
+      <Route path="/snippet/new" element={<NewSnippetPage />} />
+
+      <Route path="/posts/:id" element={<PostPage />} />
+      <Route path="/snippets/me/posts/:id" element={<PostPage />} />
     </Routes>
   );
 };

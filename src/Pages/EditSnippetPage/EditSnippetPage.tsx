@@ -3,11 +3,11 @@ import "./editSnippetPage.css";
 import NewSnippet from "../../Widgets/NewSnippet.tsx/NewSnippet";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { fetchComments } from "../HomePage/api/fetchComments";
+import { fetchComments } from "../../api/snippets/fetchComments";
 import Loader from "../../Shared/Loader/Loader";
 import { Button } from "ui-components_innowise";
 import { queryCLient } from "../../api/queryClients";
-import { deleteSnippet } from "./deleteSnippet";
+import { deleteSnippet } from "../../api/snippets/deleteSnippet";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import { useNavigate } from "react-router";
 

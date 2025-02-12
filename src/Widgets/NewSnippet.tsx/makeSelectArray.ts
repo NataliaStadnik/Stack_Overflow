@@ -1,4 +1,4 @@
-import { Languages } from "./getLanguages";
+import { Languages } from "../../api/snippets/getLanguages";
 
 type SelectObject = Array<{
   value: string;

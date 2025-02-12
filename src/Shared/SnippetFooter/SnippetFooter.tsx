@@ -7,10 +7,10 @@ import Message from "../../svg/Message";
 import { FC, useState } from "react";
 import useAuthNavigate from "../../hooks/useAuthNavigate";
 import useLoginState from "../../hooks/useLoginState";
-import { DataSnippet, OneMark } from "../../Pages/HomePage/typesSnippetComment";
-import { useGetMarks } from "./useGetMarks";
+import { DataSnippet, OneMark } from "../../api/typesSnippetComment";
+import { useGetMarks } from "../../hooks/useGetMarks";
 import { useMutation } from "@tanstack/react-query";
-import { postMark } from "./postMark";
+import { postMark } from "../../api/snippets/postMark";
 import { queryCLient } from "../../api/queryClients";
 
 interface SnippetFooterProps {

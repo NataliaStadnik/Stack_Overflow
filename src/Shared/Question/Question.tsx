@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { OneQuestion } from "../../Pages/QuestionsPage/getAllQuestions";
 import Archery from "../../svg/Archery";
 import Eye from "../../svg/Eye";
 import ButtonSvg from "../ButtonSvg/ButtonSvg";
 import "./question.css";
 import { useNavigate } from "react-router";
+import { OneQuestion } from "../../api/questions/getAllQuestions";
 
 interface QuestionProps {
   dataObj: OneQuestion;
@@ -14,7 +14,7 @@ const Question: FC<QuestionProps> = ({ dataObj }) => {
   const navigate = useNavigate();
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate(`/edit_question/${dataObj.id}`);
+    navigate(`/questions/${dataObj.id}`);
   };
 
   return (

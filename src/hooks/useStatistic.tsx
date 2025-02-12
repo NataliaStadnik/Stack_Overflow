@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { authLogout } from "../../api/auth/authLogout";
-import useLogout from "../../hooks/useLogout";
-import { authDelete } from "./authDelete";
-import { fetchStatistic } from "./fetchStatistic";
-import { getstatisticArr } from "./accountInfoArr";
-import { userType } from "../Login/authLogin";
+import { userType } from "../api/auth/authLogin";
+import useLogout from "./useLogout";
+import { fetchStatistic } from "../api/users/fetchStatistic";
+import { getstatisticArr } from "../Widgets/AccountInfo/accountInfoArr";
+import { authLogout } from "../api/auth/authLogout";
+import { authDelete } from "../api/me/authDelete";
 
 export function useStatistic(dataObj: userType) {
   const logoutMutation = useLogout(authLogout);

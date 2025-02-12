@@ -1,5 +1,6 @@
-import { userType } from "../../../Widgets/Login/authLogin";
+import { userType } from "../auth/authLogin";
 import { AllSnippets, DataSnippet } from "../typesSnippetComment";
+import { PageNumber } from "../users/allUsersFetch";
 import { fetchComments } from "./fetchComments";
 import { fetchSnippets } from "./fetchSnippets";
 
@@ -12,8 +13,8 @@ export type OneComment = {
 }
 
 
-export async function fetchSnippetsComments():Promise<AllSnippets>{
-  const data = await fetchSnippets();
+export async function fetchSnippetsComments(page:PageNumber = '1'):Promise<AllSnippets>{
+  const data = await fetchSnippets(page);
   const clone: AllSnippets = JSON.parse(JSON.stringify(data))
 
   await Promise.all(

@@ -9,7 +9,7 @@ import {
   createRegisterForm,
   createRegisterShema,
   registerUser,
-} from "./registerUser";
+} from "../../api/auth/registerUser";
 import Loader from "../../Shared/Loader/Loader";
 import { registerElementArr } from "./registerElementArr";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";

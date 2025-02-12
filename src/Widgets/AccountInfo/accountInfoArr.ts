@@ -1,4 +1,4 @@
-import { statisticType } from "./fetchStatistic";
+import { statisticType } from "../../api/users/fetchStatistic";
 
 export function getstatisticArr(data: statisticType) {
   return [

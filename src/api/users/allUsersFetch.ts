@@ -1,5 +1,5 @@
-import { instance } from "../../api/config"
-import { userType } from "../../Widgets/Login/authLogin"
+import { instance } from "../config"
+import { userType } from "../auth/authLogin"
 
 export type Links = {
   current: string,
@@ -21,8 +21,10 @@ type allUsersType = {
   meta: Meta
 }
 
-export async function allUsersFetch(): Promise<allUsersType> {
-  return (await instance.get(`/users`)
+export type PageNumber = Partial<string>
+
+export async function allUsersFetch(page:PageNumber = '1'): Promise<allUsersType> {
+  return (await instance.get(`/users?page=${page}`)
     .catch((err) => {
         throw new Error(err.response.data.message)
       })).data.data

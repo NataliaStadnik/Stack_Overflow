@@ -1,5 +1,5 @@
 import { instance } from "../../api/config"
-import { OneMark } from "../../Pages/HomePage/typesSnippetComment"
+import { OneMark } from "../typesSnippetComment"
 
 type PostMark = {
   mark: OneMark

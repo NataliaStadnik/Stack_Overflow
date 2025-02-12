@@ -4,7 +4,7 @@ import Comment from "../../Shared/Comment/Comment";
 import Snippet from "../../Widgets/Snippet/Snippet";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-import { fetchComments } from "../HomePage/api/fetchComments";
+import { fetchComments } from "../../api/snippets/fetchComments";
 import { useState } from "react";
 import NewComment from "../../Shared/NewComment/NewComment";
 import useLastIdLocation from "../../hooks/useLastIdLocation";

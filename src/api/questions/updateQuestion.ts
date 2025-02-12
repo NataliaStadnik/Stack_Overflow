@@ -1,4 +1,4 @@
-import { instance } from "../../api/config"
+import { instance } from "../config"
 import { createPostQuestionForm } from "./postQuestion"
 
 export async function updateQuestion(data: createPostQuestionForm, code: string, id: string): Promise<void> {

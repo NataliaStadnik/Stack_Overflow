@@ -15,19 +15,19 @@ export const menuElements = [
     id: 2,
     label: "My Account",
     icon: <User classes="svg-menu" />,
-    to: "/account",
+    to: "/me",
   },
   {
     id: 3,
     label: "Post Snippet",
     icon: <Snippet classes="svg-menu" />,
-    to: "/new_snippet",
+    to: "/snippet/new",
   },
   {
     id: 4,
     label: "My Snippets",
     icon: <Snippet classes="svg-menu" />,
-    to: "/my_snippets",
+    to: "/snippets/me",
   },
   {
     id: 5,
@@ -39,6 +39,6 @@ export const menuElements = [
     id: 6,
     label: "Users",
     icon: <Users classes="svg-menu" />,
-    to: "/all_users",
+    to: "/users",
   },
 ];

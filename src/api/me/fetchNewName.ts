@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { instance } from "../../api/config";
-import { fetchMe, userType } from "../Login/authLogin";
+import { instance } from "../config";
+import { fetchMe, userType } from "../auth/authLogin";
 
 export const createChangeNameShema = z.object({
   username: z.string().min(5, "Username should be at least 5 characters"),

@@ -2,13 +2,13 @@ import { Button, Select } from "ui-components_innowise";
 import "./newSnippet.css";
 import SnippetBody from "../../Shared/SnippetBody/SnippetBody";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getLanguages } from "./getLanguages";
 import Loader from "../../Shared/Loader/Loader";
 import { makeSelectArray } from "./makeSelectArray";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
-import { postNewSnippet } from "./postNewSnippet";
 import { FC, useState } from "react";
-import { updateSnippet } from "./updateSnippet";
+import { updateSnippet } from "../../api/snippets/updateSnippet";
+import { postNewSnippet } from "../../api/snippets/postNewSnippet";
+import { getLanguages } from "../../api/snippets/getLanguages";
 
 interface NewSnippetProps {
   values?: string;

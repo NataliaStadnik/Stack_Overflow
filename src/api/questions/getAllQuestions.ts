@@ -1,6 +1,6 @@
 import { instance } from "../../api/config";
-import { userType } from "../../Widgets/Login/authLogin";
-import { Links, Meta } from "../AllUsersPage/allUsersFetch";
+import { userType } from "../auth/authLogin";
+import { Links, Meta, PageNumber } from "../users/allUsersFetch";
 
 export type AllQuestionsObject = {
   data: AllQuestionsArr,
@@ -22,8 +22,8 @@ export type OneQuestion = {
   user: userType
 }
 
-export async function getAllQuestions():Promise<AllQuestionsObject> {
- return (await instance.get('/questions')
+export async function getAllQuestions(page:PageNumber = '1'):Promise<AllQuestionsObject> {
+ return (await instance.get(`/questions?page=${page}`)
   .catch((err) => {
       throw new Error(err.response.data.message)
     })

@@ -1,4 +1,4 @@
-import { instance } from "../../api/config"
+import { instance } from "../config"
 import { z } from "zod";
 
 export const createPostQuestionShema = z.object({

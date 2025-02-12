@@ -2,7 +2,7 @@ import { Button } from "ui-components_innowise";
 import "./updateBtnComment.css";
 import { FC } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { deleteComment } from "./deleteComment";
+import { deleteComment } from "../../api/comments/deleteComment";
 import Loader from "../Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import useLastIdLocation from "../../hooks/useLastIdLocation";

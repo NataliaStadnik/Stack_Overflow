@@ -9,12 +9,12 @@ import {
   createPostQuestionForm,
   createPostQuestionShema,
   postQuestion,
-} from "./postQuestion";
+} from "../../api/questions/postQuestion";
 import Loader from "../../Shared/Loader/Loader";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import { FC, useState } from "react";
 import { queryCLient } from "../../api/queryClients";
-import { updateQuestion } from "./updateQuestion";
+import { updateQuestion } from "../../api/questions/updateQuestion";
 
 interface CreateQuestionProps {
   newTitle?: string;

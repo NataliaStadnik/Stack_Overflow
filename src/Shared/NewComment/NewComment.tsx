@@ -6,19 +6,19 @@ import Loader from "../Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
-import {
-  commentPost,
-  createCommentForm,
-  createCommentShema,
-} from "./commentPost";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputElement from "../InputElement/InputElement";
 import Message from "../../svg/Message";
 import ButtonSvg from "../ButtonSvg/ButtonSvg";
 import Close from "../../svg/Close";
-import { updateComment } from "./updateComment";
 import ErrorMessageFetch from "../ErrorMessageFetch/ErrorMessageFetch";
+import {
+  commentPost,
+  createCommentForm,
+  createCommentShema,
+} from "../../api/comments/commentPost";
+import { updateComment } from "../../api/comments/updateComment";
 
 interface NewCommentProps {
   snippetId: string;

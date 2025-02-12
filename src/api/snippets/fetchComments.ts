@@ -1,4 +1,4 @@
-import { instance } from "../../../api/config";
+import { instance } from "../config";
 import { DataSnippet } from "../typesSnippetComment";
 
 export async function fetchComments(id:string): Promise<DataSnippet> {

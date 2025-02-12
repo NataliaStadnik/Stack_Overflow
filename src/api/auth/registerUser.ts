@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { instance } from "../../api/config";
+import { instance } from "../config";
 
 export const createRegisterShema = z.object({
   username: z.string().min(5, "Username should be at least 5 characters"),

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { userType } from "../../Widgets/Login/authLogin";
 import "./userInfo.css";
+import { userType } from "../../api/auth/authLogin";
 
 export interface UserInfoProps {
   data: userType;

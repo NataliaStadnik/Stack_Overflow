@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { instance } from "../../api/config";
+import { instance } from "../config";
 
 export const statisticShema = z.object({
   commentsCount: z.string(),

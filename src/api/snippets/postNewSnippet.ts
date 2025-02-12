@@ -1,4 +1,4 @@
-import { instance } from "../../api/config"
+import { instance } from "../config"
 
 export type createNewSnippetForm = {
   code: string,

@@ -1,6 +1,6 @@
-import { userType } from "../../Widgets/Login/authLogin"
-import { Links, Meta } from "../AllUsersPage/allUsersFetch"
-import { CommentsArray } from "./api/fetchSnippetsComments"
+import { userType } from "./auth/authLogin"
+import { Links, Meta } from "./users/allUsersFetch"
+import { CommentsArray } from "./snippets/fetchSnippetsComments"
 
 export type AllSnippets = {
   links: Links,
