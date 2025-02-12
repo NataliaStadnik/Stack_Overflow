@@ -5,14 +5,13 @@ import Pagination from "../../Widgets/Pagination/Pagination";
 import SnippetsList from "../../Widgets/SnippetsList/SnippetsList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import { fetchSnippetsComments } from "../../api/snippets/fetchSnippetsComments";
+import usePages from "../../hooks/usePages";
 
 const HomePage = () => {
   const [page, setPage] = useState("1");
-  const [, setSearchParams] = useSearchParams();
 
   const { error, isError, isSuccess, data, isPending, refetch, isFetching } =
     useQuery({
@@ -21,14 +20,12 @@ const HomePage = () => {
       retry: 1,
     });
 
-  useEffect(() => {
-    refetch();
-    setSearchParams({ page: page });
-  }, [page]);
+  usePages({ page, setPage, refetch });
 
   if (isPending) {
     return <Loader type="big" />;
   }
+
   return (
     <div className="section__home">
       <HeaderSection

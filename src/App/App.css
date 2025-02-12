@@ -41,3 +41,17 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
+
+.register--correct {
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 120px;
+  color: rgb(57, 171, 57);
+  font-size: 14px;
+}
+
+.snippet-list__load {
+  opacity: .5;
+}

@@ -17,6 +17,8 @@ const Question: FC<QuestionProps> = ({ dataObj }) => {
     navigate(`/questions/${dataObj.id}`);
   };
 
+  // добавить страницу с ответами
+
   return (
     <li className="questions-list__item">
       <article className="question-article">

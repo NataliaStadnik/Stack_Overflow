@@ -5,14 +5,12 @@ import OneUser from "../../Widgets/OneUser/OneUser";
 import { allUsersFetch } from "../../api/users/allUsersFetch";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
+import usePages from "../../hooks/usePages";
 
 const AllUsersPage = () => {
   const [page, setPage] = useState("1");
-  const [, setSearchParams] = useSearchParams();
-
   const { error, isError, isSuccess, isPending, data, refetch, isFetching } =
     useQuery({
       queryFn: () => allUsersFetch(page),
@@ -20,10 +18,7 @@ const AllUsersPage = () => {
       retry: 1,
     });
 
-  useEffect(() => {
-    refetch();
-    setSearchParams({ page: page });
-  }, [page]);
+  usePages({ page, setPage, refetch });
 
   if (isPending) {
     return <Loader type="big" />;

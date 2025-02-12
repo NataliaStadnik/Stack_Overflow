@@ -2,6 +2,7 @@ import { FC } from "react";
 import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
 import Arrow from "../../svg/Arrow";
 import "./pagination.css";
+import { useSearchParams } from "react-router";
 
 interface PaginationProps {
   currentPage?: string;
@@ -9,21 +10,17 @@ interface PaginationProps {
   maxPage?: string;
 }
 
-const Pagination: FC<PaginationProps> = ({
-  currentPage = "1",
-  setPage,
-  maxPage,
-}) => {
+const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
+  const [params, setSearchParams] = useSearchParams();
+
   const IncreasePage = () => {
-    if (setPage) {
-      setPage((+currentPage + 1).toString());
-    }
+    const num = (Number(params.get("page")) + 1).toString();
+    setSearchParams({ page: num });
   };
 
   const DecreasePage = () => {
-    if (setPage) {
-      setPage((+currentPage - 1).toString());
-    }
+    const num = (Number(params.get("page")) - 1).toString();
+    setSearchParams({ page: num });
   };
 
   return (

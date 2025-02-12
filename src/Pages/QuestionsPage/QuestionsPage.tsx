@@ -2,18 +2,18 @@ import { Button } from "ui-components_innowise";
 import AllQuestions from "../../Widgets/AllQuestions/AllQuestions";
 import Pagination from "../../Widgets/Pagination/Pagination";
 import "./questionsPage.css";
-import { useNavigate, useSearchParams } from "react-router";
+import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import { getAllQuestions } from "../../api/questions/getAllQuestions";
+import usePages from "../../hooks/usePages";
 
 const QuestionsPage = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState("1");
-  const [, setSearchParams] = useSearchParams();
 
   const handleClick = () => {
     navigate("/questions/new");
@@ -23,13 +23,10 @@ const QuestionsPage = () => {
     useQuery({
       queryFn: () => getAllQuestions(page),
       queryKey: ["questions"],
-      retry: 1,
+      enabled: false,
     });
 
-  useEffect(() => {
-    refetch();
-    setSearchParams({ page: page });
-  }, [page]);
+  usePages({ page, setPage, refetch });
 
   if (isPending) {
     return <Loader type="big" />;

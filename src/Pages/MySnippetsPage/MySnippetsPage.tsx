@@ -7,14 +7,14 @@ import SnippetsList from "../../Widgets/SnippetsList/SnippetsList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { fetchUserSnippets } from "../../api/snippets/fetchUserSnippets";
-import { useNavigate, useSearchParams } from "react-router";
+import { useNavigate } from "react-router";
 import { Button } from "ui-components_innowise";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
+import usePages from "../../hooks/usePages";
 
 const MySnippetsPage = () => {
   const [page, setPage] = useState("1");
-  const [, setSearchParams] = useSearchParams();
 
   const myId = useSelector((state: RootState) => state.userState.id);
   const navigate = useNavigate();
@@ -26,10 +26,7 @@ const MySnippetsPage = () => {
       retry: 1,
     });
 
-  useEffect(() => {
-    refetch();
-    setSearchParams({ page: page });
-  }, [page]);
+  usePages({ page, setPage, refetch });
 
   if (isPending) {
     return <Loader type="big" />;
