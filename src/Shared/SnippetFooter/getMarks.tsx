@@ -1,9 +1,6 @@
-import { useSelector } from "react-redux";
-import { MarkTypeArray } from "../api/typesSnippetComment";
-import { RootState } from "../store/store";
+import { MarkTypeArray } from "../../api/typesSnippetComment";
 
-export function useGetMarks(objArr: MarkTypeArray) {
-  const myID = useSelector((state: RootState) => state.userState.id);
+export function GetMarks(objArr: MarkTypeArray, myID: string) {
   let markLike = 0;
   let markDislike = 0;
   let myStatus = "none";
@@ -26,6 +23,7 @@ export function useGetMarks(objArr: MarkTypeArray) {
       myStatus = status;
     }
   }
+
   return {
     like: markLike.toString(),
     dislike: markDislike.toString(),

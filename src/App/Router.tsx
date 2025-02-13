@@ -1,55 +1,36 @@
 import { Route, Routes } from "react-router";
-import { lazy } from "react";
-
-const HomePage = lazy(() => import("../Pages/HomePage/HomePage"));
-const PostPage = lazy(() => import("../Pages/PostPage/PostPage"));
-const UserPage = lazy(() => import("../Pages/UserPage/UserPage"));
-const AccountPage = lazy(() => import("../Pages/AccountPage/AccountPage"));
-const AllUsersPage = lazy(() => import("../Pages/AllUsersPage/AllUsersPage"));
-const Modal = lazy(() => import("../Pages/Modal/Modal"));
-const MySnippetsPage = lazy(
-  () => import("../Pages/MySnippetsPage/MySnippetsPage")
-);
-const EditSnippetPage = lazy(
-  () => import("../Pages/EditSnippetPage/EditSnippetPage")
-);
-const NewQuestionPage = lazy(
-  () => import("../Pages/NewQuestionPage/NewQuestionPage")
-);
-const EditQuestionPage = lazy(
-  () => import("../Pages/EditQuestionPage/EditQuestionPage")
-);
-const NewSnippetPage = lazy(
-  () => import("../Pages/NewSnippetPage/NewSnippetPage")
-);
-const QuestionsPage = lazy(
-  () => import("../Pages/QuestionsPage/QuestionsPage")
-);
-const Answers = lazy(() => import("../Pages/Answers/Answers"));
+import { LazyAccountPage } from "../Pages/AccountPage/LazyAccountPage";
+import { LazyAllUsersPage } from "../Pages/AllUsersPage/LazyAllUsersPage";
+import { LazyAnswers } from "../Pages/Answers/LazyAnswers";
+import { LazyEditQuestionPage } from "../Pages/EditQuestionPage/LazyEditQuestionPage";
+import { LazyEditSnippetPage } from "../Pages/EditSnippetPage/LazyEditSnippetPage";
+import { LazyHomePage } from "../Pages/HomePage/LazyHomePage";
+import { LazyModal } from "../Pages/Modal/LazyModal";
+import { LazyMySnippetsPage } from "../Pages/MySnippetsPage/LazyMySnippetsPage";
+import { LazyNewQuestionPage } from "../Pages/NewQuestionPage/LazyNewQuestionPage";
+import { LazyNewSnippetPage } from "../Pages/NewSnippetPage/LazyNewSnippetPage";
+import { LazyPostPage } from "../Pages/PostPage/LazyPostPage";
+import { LazyQuestionsPage } from "../Pages/QuestionsPage/LazyQuestionsPage";
+import { LazyUserPage } from "../Pages/UserPage/LazyUserPage";
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/register" element={<Modal type="register" />} />
-      <Route path="/login" element={<Modal type="login" />} />
-
-      <Route path="/" element={<HomePage />} />
-      <Route path="/users" element={<AllUsersPage />} />
-      <Route path="/me" element={<AccountPage />} />
-      <Route path="/user" element={<UserPage />} />
-
-      <Route path="/questions" element={<QuestionsPage />} />
-      <Route path="/questions/new" element={<NewQuestionPage />} />
-      <Route path="/questions/:id" element={<EditQuestionPage />} />
-
-      <Route path="/answers/:id" element={<Answers />} />
-
-      <Route path="/snippets/me" element={<MySnippetsPage />} />
-      <Route path="/snippet/edit/:id" element={<EditSnippetPage />} />
-      <Route path="/snippet/new" element={<NewSnippetPage />} />
-
-      <Route path="/posts/:id" element={<PostPage />} />
-      <Route path="/snippets/me/posts/:id" element={<PostPage />} />
+      <Route path="/register" element={<LazyModal type="register" />} />
+      <Route path="/login" element={<LazyModal type="login" />} />
+      <Route path="/" element={<LazyHomePage />} />
+      <Route path="/users" element={<LazyAllUsersPage />} />
+      <Route path="/me" element={<LazyAccountPage />} />
+      <Route path="/user" element={<LazyUserPage />} />
+      <Route path="/questions" element={<LazyQuestionsPage />} />
+      <Route path="/questions/new" element={<LazyNewQuestionPage />} />
+      <Route path="/questions/:id" element={<LazyEditQuestionPage />} />
+      <Route path="/answers/:id" element={<LazyAnswers />} />
+      <Route path="/snippets/me" element={<LazyMySnippetsPage />} />
+      <Route path="/snippet/edit/:id" element={<LazyEditSnippetPage />} />
+      <Route path="/snippet/new" element={<LazyNewSnippetPage />} />
+      <Route path="/posts/:id" element={<LazyPostPage />} />
+      <Route path="/snippets/me/posts/:id" element={<LazyPostPage />} />
     </Routes>
   );
 };

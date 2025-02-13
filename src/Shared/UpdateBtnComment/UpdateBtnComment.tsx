@@ -24,7 +24,7 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
   const deleteMutation = useMutation({
     mutationFn: () => deleteComment(commentId),
     onSuccess() {
-      queryCLient.invalidateQueries({ queryKey: [`snippets/${locationId}}`] });
+      queryCLient.invalidateQueries({ queryKey: [`snippets/${locationId}`] });
     },
   });
 

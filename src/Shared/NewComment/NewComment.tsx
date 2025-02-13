@@ -55,7 +55,7 @@ const NewComment: FC<NewCommentProps> = ({
       : commentPost,
     onSuccess() {
       queryCLient.invalidateQueries({
-        queryKey: [`snippets/${snippetId}}`],
+        queryKey: [`snippets/${snippetId}`],
       });
       setStatus(false);
     },

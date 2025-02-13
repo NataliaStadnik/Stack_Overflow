@@ -38,8 +38,6 @@ const NewSnippet: FC<NewSnippetProps> = ({
       queryCLient.invalidateQueries({
         queryKey: [`snippets/${id}}`],
       });
-      // setSelect("");
-      // setValue("");
     },
   });
 
@@ -86,7 +84,6 @@ const NewSnippet: FC<NewSnippetProps> = ({
         <SnippetBody
           value={value}
           setValue={setValue}
-          forNewSnippet
           classes="new-snippet__code"
           language={select}
           readonly={update && false}

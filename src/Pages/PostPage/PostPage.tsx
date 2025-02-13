@@ -9,15 +9,13 @@ import { useState } from "react";
 import NewComment from "../../Shared/NewComment/NewComment";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 
-// not update likes/dislikes
-
 const PostPage = () => {
   const locationId = useLastIdLocation();
   const [status, setStatus] = useState(false);
 
   const { error, isError, isSuccess, isPending, data } = useQuery({
     queryFn: () => fetchComments(locationId),
-    queryKey: [`snippets/${locationId}}`],
+    queryKey: [`snippets/${locationId}`],
     retry: 1,
   });
 

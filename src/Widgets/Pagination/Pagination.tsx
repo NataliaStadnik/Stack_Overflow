@@ -17,11 +17,13 @@ const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
   const IncreasePage = () => {
     const num = (Number(params.get("page")) + 1).toString();
     setSearchParams({ page: num });
+    setValue(num);
   };
 
   const DecreasePage = () => {
     const num = (Number(params.get("page")) - 1).toString();
     setSearchParams({ page: num });
+    setValue(num);
   };
 
   const handleChange = (num: string) => {
