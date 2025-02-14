@@ -4,24 +4,18 @@ import Comment from "../../Shared/Comment/Comment";
 import Snippet from "../../Widgets/Snippet/Snippet";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
-import { fetchComments } from "../HomePage/api/fetchComments";
+import { fetchComments } from "../../api/snippets/fetchComments";
 import { useState } from "react";
-import NewComment from "../../Shared/NewComment/NewComment";
+import NewComment from "../../Widgets/NewComment/NewComment";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
-
-// not update likes/dislikes
 
 const PostPage = () => {
   const locationId = useLastIdLocation();
   const [status, setStatus] = useState(false);
 
-  const handleAddComment = () => {
-    setStatus(true);
-  };
-
   const { error, isError, isSuccess, isPending, data } = useQuery({
     queryFn: () => fetchComments(locationId),
-    queryKey: [`snippets/${locationId}}`],
+    queryKey: [`snippets/${locationId}`],
     retry: 1,
   });
 
@@ -37,7 +31,7 @@ const PostPage = () => {
     <section className="post-page">
       <div className="post-page-btn__wrapper">
         <Button
-          onClick={handleAddComment}
+          onClick={() => setStatus(true)}
           classes="edit-snippet addcomment-snippet"
           children={"Add comment"}
         />

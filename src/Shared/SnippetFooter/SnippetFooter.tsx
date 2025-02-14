@@ -7,11 +7,12 @@ import Message from "../../svg/Message";
 import { FC, useState } from "react";
 import useAuthNavigate from "../../hooks/useAuthNavigate";
 import useLoginState from "../../hooks/useLoginState";
-import { DataSnippet, OneMark } from "../../Pages/HomePage/typesSnippetComment";
-import { useGetMarks } from "./useGetMarks";
+import { DataSnippet, OneMark } from "../../api/typesSnippetComment";
+import { GetMarks } from "./getMarks";
 import { useMutation } from "@tanstack/react-query";
-import { postMark } from "./postMark";
-import { queryCLient } from "../../api/queryClients";
+import { postMark } from "../../api/snippets/postMark";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 interface SnippetFooterProps {
   to?: string;
@@ -19,16 +20,20 @@ interface SnippetFooterProps {
 }
 
 const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
-  const path = useLocation().pathname;
+  const myId = useSelector((state: RootState) => state.userState.id);
+  const path = useLocation();
   const authState = useLoginState();
   const navigate = useNavigate();
   const [href, setHref] = useState(to);
   useAuthNavigate(`${to}/${dataObj.id}`, setHref);
-  const marksStatus = useGetMarks(dataObj.marks);
 
-  // fix comment path
+  const marksStatus = GetMarks(dataObj.marks, myId);
+  const [like, setLike] = useState(marksStatus.like);
+  const [dislike, setDisLike] = useState(marksStatus.dislike);
+  const [status, setStatus] = useState(marksStatus.status);
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (path.includes(`/posts`)) {
+    if (path.pathname.includes(`/posts`)) {
       e.preventDefault();
     }
   };
@@ -36,10 +41,11 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
   function useInnerMutation(status: OneMark) {
     const mutation = useMutation({
       mutationFn: () => postMark(status, dataObj.id),
-      onSuccess() {
-        queryCLient.invalidateQueries({
-          queryKey: ["snippets"],
-        });
+      onSuccess(data) {
+        const marksStatus = GetMarks(data.marks, myId);
+        setDisLike(marksStatus.dislike);
+        setLike(marksStatus.like);
+        setStatus(marksStatus.status);
       },
     });
     return mutation;
@@ -54,7 +60,7 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
       navigate("/login");
       return;
     }
-    if (clickBTN === marksStatus.status) {
+    if (clickBTN === status) {
       NoneMutation.mutate();
       return;
     }
@@ -73,21 +79,23 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
       <div className="snippet__likes">
         <ButtonSvg
           onClick={() => handleMark("like")}
-          label={marksStatus.like}
+          label={like}
           classes="likes-wrap snippet-text"
           svg={<Like classes="snippet__svg" />}
         />
 
         <ButtonSvg
           onClick={() => handleMark("dislike")}
-          label={marksStatus.dislike}
+          label={dislike}
           classes="likes-wrap snippet-text"
           svg={<Dislike classes="snippet__svg" />}
         />
       </div>
 
       <Link onClick={handleClick} to={href} className="snippet__feedback">
-        <span className="snippet-text">{dataObj.comments?.length}</span>
+        <span className="snippet-text comments__count">
+          {dataObj.comments?.length}
+        </span>
         <Message classes="snippet__svg" />
       </Link>
     </div>

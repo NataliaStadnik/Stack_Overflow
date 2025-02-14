@@ -15,6 +15,7 @@
 }
 
 .one-user__img {
+  flex-shrink: 0;
   width: 80px;
   height: 80px;
 }
@@ -36,4 +37,47 @@
   right: 10px;
   text-align: center;
   font-size: 12px;
+}
+
+.all-users-list .top-info__name {
+  word-break: break-all;
+}
+
+
+@media (max-width: 1200px) {
+  .one-user {
+    gap: 50px;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 525px) {
+  .one-user {
+    gap: 10px;
+  }
+
+  .one-user__img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .all-users .button-medium {
+    padding: 8px 5px;
+    font-size: 9px;
+    line-height: 14px;
+    max-width: 70px;
+  }
+}
+
+
+@media (max-width: 425px) {
+  .one-user {
+    flex-direction: column;
+  }
+
+  .all-users .button-medium {
+    bottom: initial;
+    top: 10px;
+  }
 }

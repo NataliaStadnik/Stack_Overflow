@@ -9,6 +9,7 @@ interface ButtonSvgProps
   label?: string;
   type?: "button" | "link";
   to?: string;
+  disabled?: boolean;
 }
 
 const ButtonSvg: FC<ButtonSvgProps> = ({
@@ -17,11 +18,16 @@ const ButtonSvg: FC<ButtonSvgProps> = ({
   label,
   type = "button",
   to = "",
+  disabled,
   ...props
 }) => {
   if (type === "button") {
     return (
-      <button className={`btn__svg ${classes ? classes : ""}`} {...props}>
+      <button
+        disabled={disabled}
+        className={`btn__svg ${classes ? classes : ""}`}
+        {...props}
+      >
         {label}
         {svg}
       </button>

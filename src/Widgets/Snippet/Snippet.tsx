@@ -3,7 +3,7 @@ import { FC } from "react";
 import SnippetBody from "../../Shared/SnippetBody/SnippetBody";
 import SnippetHeader from "../../Shared/SnippetHeader/SnippetHeader";
 import SnippetFooter from "../../Shared/SnippetFooter/SnippetFooter";
-import { DataSnippet } from "../../Pages/HomePage/typesSnippetComment";
+import { DataSnippet } from "../../api/typesSnippetComment";
 
 interface SnippetProps {
   children?: JSX.Element;
@@ -15,7 +15,7 @@ const Snippet: FC<SnippetProps> = ({ children, dataObj }) => {
     <>
       <article className="snippet__wrapper">
         <SnippetHeader dataObj={dataObj} />
-        <SnippetBody code={dataObj.code} />
+        <SnippetBody value={dataObj.code} />
         <SnippetFooter dataObj={dataObj} />
       </article>
       {children}

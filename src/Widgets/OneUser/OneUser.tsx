@@ -3,8 +3,8 @@ import UserInfo from "../../Shared/UserInfo/UserInfo";
 import "./oneUser.css";
 import { Button } from "ui-components_innowise";
 import { useQuery } from "@tanstack/react-query";
-import { fetchStatistic } from "../AccountInfo/fetchStatistic";
-import { userType } from "../Login/authLogin";
+import { fetchStatistic } from "../../api/users/fetchStatistic";
+import { userType } from "../../api/auth/authLogin";
 import Loader from "../../Shared/Loader/Loader";
 import { getstatisticArr } from "../AccountInfo/accountInfoArr";
 import InfoElement from "../../Shared/InfoElement/InfoElement";
@@ -14,7 +14,6 @@ interface OneUserProps {
   dataObj: userType;
 }
 
-// закрывать списки при уходе со страницы
 const OneUser: FC<OneUserProps> = ({ dataObj }) => {
   const { error, data, refetch, isFetching, isSuccess, isError } = useQuery({
     queryFn: () => fetchStatistic(dataObj.id),

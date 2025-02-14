@@ -3,10 +3,9 @@ import useLastIdLocation from "../../hooks/useLastIdLocation";
 import CreateQuestion from "../../Widgets/CreateQuestion/CreateQuestion";
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import "./editQuestionPage.css";
-import { getOneQuestion } from "./getOneQuestion";
+import { getOneQuestion } from "../../api/questions/getOneQuestion";
 import Loader from "../../Shared/Loader/Loader";
 
-// не идет запрос
 const EditQuestionPage = () => {
   const id = useLastIdLocation();
 

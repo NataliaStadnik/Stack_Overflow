@@ -2,28 +2,18 @@ import { FC } from "react";
 import "./snippetBody.css";
 
 interface SnippetBodyProps {
-  classes?: string;
-  code?: string;
-  forNewSnippet?: boolean;
   value?: string;
-  setValue?: (a: string) => void;
 }
 
 type CodeObjectType = Array<{
   numString: number;
-  code?: string;
   id: number;
+  code: string;
 }>;
 
-const SnippetBody: FC<SnippetBodyProps> = ({
-  classes = "",
-  code = "",
-  forNewSnippet = false,
-  value,
-  setValue,
-}) => {
+const SnippetBody: FC<SnippetBodyProps> = ({ value }) => {
   const codeArray: CodeObjectType = [];
-  code.split("\n").map((elem, index) => {
+  value?.split("\n").map((elem, index) => {
     const obj = {
       id: index,
       numString: index + 1,
@@ -33,32 +23,18 @@ const SnippetBody: FC<SnippetBodyProps> = ({
   });
 
   return (
-    <div className={`snippet__body codebase ${classes}`}>
-      <div className="codebase__number">
-        {codeArray.map((elem) => (
-          <code key={elem.numString} className="snippet-text codebase__text">
-            {elem.numString}
-          </code>
-        ))}
-      </div>
-
-      <div className="snippet-text code-text">
-        {codeArray.map((elem) => (
-          <pre key={elem.id}>
-            {forNewSnippet ? (
-              <input
-                type="text"
-                className="code-input"
-                value={value}
-                onChange={(e) => setValue && setValue(e.target.value)}
-              />
-            ) : (
-              <code className="codebase__text">{elem.code}</code>
-            )}
-          </pre>
-        ))}
-      </div>
-    </div>
+    <ul className={`snippet__body codebase`}>
+      {codeArray.map(({ id, numString, code }) => (
+        <li className="codebase__item" key={id}>
+          <code className="codebase__text">{numString}</code>
+          <div className="snippet-text code-text">
+            <code key={id}>
+              <pre>{code}</pre>
+            </code>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };
 

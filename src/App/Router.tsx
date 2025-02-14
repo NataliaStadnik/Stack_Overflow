@@ -1,34 +1,36 @@
 import { Route, Routes } from "react-router";
-import HomePage from "../Pages/HomePage/HomePage";
-import AccountPage from "../Pages/AccountPage/AccountPage";
-import NewQuestionPage from "../Pages/NewQuestionPage/NewQuestionPage";
-import NewSnippetPage from "../Pages/NewSnippetPage/NewSnippetPage";
-import PostPage from "../Pages/PostPage/PostPage";
-import QuestionsPage from "../Pages/QuestionsPage/QuestionsPage";
-import Modal from "../Pages/Modal/Modal";
-import MySnippetsPage from "../Pages/MySnippetsPage/MySnippetsPage";
-import EditSnippetPage from "../Pages/EditSnippetPage/EditSnippetPage";
-import AllUsersPage from "../Pages/AllUsersPage/AllUsersPage";
-import UserPage from "../Pages/UserPage/UserPage";
-import EditQuestionPage from "../Pages/EditQuestionPage/EditQuestionPage";
+import { LazyAccountPage } from "../Pages/AccountPage/LazyAccountPage";
+import { LazyAllUsersPage } from "../Pages/AllUsersPage/LazyAllUsersPage";
+import { LazyAnswers } from "../Pages/Answers/LazyAnswers";
+import { LazyEditQuestionPage } from "../Pages/EditQuestionPage/LazyEditQuestionPage";
+import { LazyEditSnippetPage } from "../Pages/EditSnippetPage/LazyEditSnippetPage";
+import { LazyHomePage } from "../Pages/HomePage/LazyHomePage";
+import { LazyModal } from "../Pages/Modal/LazyModal";
+import { LazyMySnippetsPage } from "../Pages/MySnippetsPage/LazyMySnippetsPage";
+import { LazyNewQuestionPage } from "../Pages/NewQuestionPage/LazyNewQuestionPage";
+import { LazyNewSnippetPage } from "../Pages/NewSnippetPage/LazyNewSnippetPage";
+import { LazyPostPage } from "../Pages/PostPage/LazyPostPage";
+import { LazyQuestionsPage } from "../Pages/QuestionsPage/LazyQuestionsPage";
+import { LazyUserPage } from "../Pages/UserPage/LazyUserPage";
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/posts/:id" element={<PostPage />} />
-      <Route path="/my_snippets/posts/:id" element={<PostPage />} />
-      <Route path="/my_snippets" element={<MySnippetsPage />} />
-      <Route path="/edit_snippet/:id" element={<EditSnippetPage />} />
-      <Route path="/account" element={<AccountPage />} />
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/all_users" element={<AllUsersPage />} />
-      <Route path="/new_question" element={<NewQuestionPage />} />
-      <Route path="/edit_question/:id" element={<EditQuestionPage />} />
-      <Route path="/new_snippet" element={<NewSnippetPage />} />
-      <Route path="/questions" element={<QuestionsPage />} />
-      <Route path="/register" element={<Modal type="register" />} />
-      <Route path="/login" element={<Modal type="login" />} />
+      <Route path="/register" element={<LazyModal type="register" />} />
+      <Route path="/login" element={<LazyModal type="login" />} />
+      <Route path="/" element={<LazyHomePage />} />
+      <Route path="/users" element={<LazyAllUsersPage />} />
+      <Route path="/me" element={<LazyAccountPage />} />
+      <Route path="/user" element={<LazyUserPage />} />
+      <Route path="/questions" element={<LazyQuestionsPage />} />
+      <Route path="/questions/new" element={<LazyNewQuestionPage />} />
+      <Route path="/questions/:id" element={<LazyEditQuestionPage />} />
+      <Route path="/answers/:id" element={<LazyAnswers />} />
+      <Route path="/snippets/me" element={<LazyMySnippetsPage />} />
+      <Route path="/snippet/edit/:id" element={<LazyEditSnippetPage />} />
+      <Route path="/snippet/new" element={<LazyNewSnippetPage />} />
+      <Route path="/posts/:id" element={<LazyPostPage />} />
+      <Route path="/snippets/me/posts/:id" element={<LazyPostPage />} />
     </Routes>
   );
 };

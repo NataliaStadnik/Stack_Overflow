@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./registerError.css";
 
 interface ErrorMessageFetchProps {
-  mutation: any;
+  mutation: { error?: { message: string } | null };
 }
 
 const ErrorMessageFetch: FC<ErrorMessageFetchProps> = ({ mutation }) => {

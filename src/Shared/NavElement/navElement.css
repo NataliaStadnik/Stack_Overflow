@@ -55,3 +55,9 @@
 .menu__link:focus-visible svg path {
   stroke: var(--color-white);
 }
+
+@media (max-width: 768px) {
+  .menu__link {
+    gap: 10px;
+  }
+}

@@ -1,7 +1,7 @@
+import { createLoginForm } from "../../api/auth/authLogin";
 import Key from "../../svg/Key";
 import User from "../../svg/User";
 import { ElementProps } from "../Register/registerElementArr";
-import { createLoginForm } from "./authLogin";
 
 type LoginField = keyof createLoginForm;
 

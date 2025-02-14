@@ -8,11 +8,11 @@ const UserPage = () => {
   const userName = useSelector((state: RootState) => state.userState.username);
 
   return (
-    <section className="users">
+    <section className="user">
       <HeaderSection
         children={
-          <div className="account__title">
-            <span>Welcome,</span>
+          <div className="title account__title">
+            <span>Welcome, </span>
             <span className="welcome">{userName}</span>
           </div>
         }

@@ -4,13 +4,17 @@ import InputElement from "../../Shared/InputElement/InputElement";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { createLoginForm, createLoginShema, authLogin } from "./authLogin";
 import Loader from "../../Shared/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/authSlice";
 import { loginElementArr } from "./loginElementArr";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import { setUserInfo } from "../../store/userSlice";
+import {
+  authLogin,
+  createLoginForm,
+  createLoginShema,
+} from "../../api/auth/authLogin";
 
 const Login = () => {
   const dispatch = useDispatch();

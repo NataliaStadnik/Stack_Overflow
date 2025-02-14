@@ -8,7 +8,7 @@ import {
   changeUserName,
   createChangeNameForm,
   createChangeNameShema,
-} from "./fetchNewName";
+} from "../../api/me/fetchNewName";
 import Loader from "../../Shared/Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import { loginElementArr } from "../Login/loginElementArr";

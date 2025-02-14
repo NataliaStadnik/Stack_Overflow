@@ -1,5 +1,5 @@
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
-import NewSnippet from "../../Widgets/NewSnippet.tsx/NewSnippet";
+import NewSnippet from "../../Widgets/NewSnippet/NewSnippet";
 import "./newSnippetPage.css";
 
 const NewSnippetPage = () => {

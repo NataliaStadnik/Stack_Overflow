@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { AllDataSnippets } from "../../Pages/HomePage/typesSnippetComment";
 import Snippet from "../Snippet/Snippet";
 import "./snippetsList.css";
+import { AllDataSnippets } from "../../api/typesSnippetComment";
 
 interface SnippetsListProps {
   dataObj: AllDataSnippets;
+  classes?: string;
 }
 
-const SnippetsList: FC<SnippetsListProps> = ({ dataObj }) => {
+const SnippetsList: FC<SnippetsListProps> = ({ dataObj, classes = "" }) => {
   return (
-    <ul className="snippet-list">
+    <ul className={`snippet-list ${classes}`}>
       {dataObj.map((elem) => (
         <li key={elem.id} className="snippet">
           <Snippet dataObj={elem} />

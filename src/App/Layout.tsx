@@ -7,12 +7,15 @@ import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { setUserInfo } from "../store/userSlice";
-
-// исправить отступы ошибки при регистрации
-// исправить отстсупы сообщения при изменении пароля
-// убрать двойой лоадер
+import { Suspense, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Layout = () => {
+  const isTablet = useMediaQuery({
+    query: "(min-width: 620px)",
+  });
+
+  const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { status, data } = useQuery({
     queryFn: () => auth(),
@@ -31,16 +34,20 @@ const Layout = () => {
       dispatch(setUserInfo(data));
   }
   return (
-    <div id="layout" className="layout">
-      <h1 className="visually-hidden">Stack Overflow</h1>
-      <Header />
-      <div className="outer-wrapper">
-        <Menu />
-        <div className="container section section__container">
-          <Router />
+    <Suspense>
+      <div id="layout" className="layout">
+        <h1 className="visually-hidden">Stack Overflow</h1>
+        <Header isOpen={isOpen} setOpen={setOpen} />
+
+        <div className="outer-wrapper">
+          {(isTablet || isOpen) && <Menu isOpen={isOpen} setOpen={setOpen} />}
+
+          <div className="container section section__container">
+            <Router />
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

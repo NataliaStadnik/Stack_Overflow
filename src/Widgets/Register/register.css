@@ -61,13 +61,3 @@
   width: 24px;
   height: 24px;
 }
-
-.register--correct {
-  width: max-content;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  bottom: 120px;
-  color: rgb(57, 171, 57);
-  font-size: 14px;
-}

@@ -5,7 +5,7 @@ import Delete from "../../svg/Delete";
 import Logout from "../../svg/Logout";
 import "./accountInfo.css";
 import Loader from "../../Shared/Loader/Loader";
-import { useStatistic } from "./useStatistic";
+import { useStatistic } from "../../hooks/useStatistic";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { FC } from "react";

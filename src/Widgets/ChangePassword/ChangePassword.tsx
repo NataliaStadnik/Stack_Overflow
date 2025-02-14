@@ -6,19 +6,14 @@ import Loader from "../../Shared/Loader/Loader";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import {
   changePassword,
   createChangePasswordForm,
   createChangePasswordShema,
-} from "./fetchChange";
-import { useNavigate } from "react-router";
-import { setAuthFalse } from "../../store/authSlice";
-import { useDispatch } from "react-redux";
-import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
+} from "../../api/me/fetchChange";
 
 const ChangePassword = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -32,9 +27,6 @@ const ChangePassword = () => {
     mutationFn: changePassword,
     onSuccess() {
       reset();
-      // navigate("/login");
-      // dispatch(setAuthFalse());
-      // queryCLient.invalidateQueries({ queryKey: ["auth"] });
     },
   });
 

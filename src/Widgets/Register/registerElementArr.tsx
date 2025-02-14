@@ -1,6 +1,6 @@
 import Key from "../../svg/Key";
 import { loginElementArr } from "../Login/loginElementArr";
-import { createRegisterForm } from "./registerUser";
+import { createRegisterForm } from "../../api/auth/registerUser";
 
 export type RegisterFields = keyof createRegisterForm;
 

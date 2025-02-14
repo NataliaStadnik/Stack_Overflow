@@ -5,7 +5,7 @@ import "./snippetHeader.css";
 import { Button } from "ui-components_innowise";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { DataSnippet } from "../../Pages/HomePage/typesSnippetComment";
+import { DataSnippet } from "../../api/typesSnippetComment";
 import { useNavigate } from "react-router";
 
 interface SnippetHeaderProps {
@@ -18,7 +18,7 @@ const SnippetHeader: FC<SnippetHeaderProps> = ({ dataObj }) => {
 
   const handleCLick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate(`/edit_snippet/${dataObj.id}`);
+    navigate(`/snippet/edit/${dataObj.id}`);
   };
 
   return (
