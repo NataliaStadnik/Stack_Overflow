@@ -20,8 +20,8 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.2.0",
+    "react-responsive": "^10.0.0",
     "react-router": "^7.1.5",
-    "redux-thunk": "^3.1.0",
     "ui-components_innowise": "^1.0.9",
     "zod": "^3.24.1"
   },
@@ -29,6 +29,7 @@
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
+    "@types/react-window": "^1.8.8",
     "@vitejs/plugin-react": "^4.3.3",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",

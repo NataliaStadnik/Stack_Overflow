@@ -8,9 +8,12 @@ import Loader from "../../Shared/Loader/Loader";
 import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import usePages from "../../hooks/usePages";
+import { useSearchParams } from "react-router";
 
 const AllUsersPage = () => {
-  const [page, setPage] = useState("1");
+  const [params] = useSearchParams();
+  const [page, setPage] = useState(params.get("page") || "1");
+
   const { error, isError, isSuccess, isPending, data, refetch, isFetching } =
     useQuery({
       queryFn: () => allUsersFetch(page),

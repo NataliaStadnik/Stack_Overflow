@@ -1,5 +1,8 @@
 import { instance } from "../config"
 
 export async function authLogout(): Promise<void> {
-  return await instance.post(`/auth/logout`)
+  await instance.post(`/auth/logout`)
+    .catch((err) => {
+      throw new Error(err.response.data.message)
+    })
 }

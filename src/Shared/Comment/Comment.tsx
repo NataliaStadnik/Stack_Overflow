@@ -3,8 +3,8 @@ import Message from "../../svg/Message";
 import "./comment.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import UpdateBtnComment from "../UpdateBtnComment/UpdateBtnComment";
-import NewComment from "../NewComment/NewComment";
+import UpdateBtnComment from "../../Widgets/UpdateBtnComment/UpdateBtnComment";
+import NewComment from "../../Widgets/NewComment/NewComment";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 import { OneComment } from "../../api/snippets/fetchSnippetsComments";
 

@@ -7,14 +7,16 @@ import SnippetsList from "../../Widgets/SnippetsList/SnippetsList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { fetchUserSnippets } from "../../api/snippets/fetchUserSnippets";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { Button } from "ui-components_innowise";
 import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import usePages from "../../hooks/usePages";
 
 const MySnippetsPage = () => {
-  const [page, setPage] = useState("1");
+  const [params] = useSearchParams();
+  const [page, setPage] = useState(params.get("page") || "1");
+
   const myId = useSelector((state: RootState) => state.userState.id);
   const navigate = useNavigate();
 

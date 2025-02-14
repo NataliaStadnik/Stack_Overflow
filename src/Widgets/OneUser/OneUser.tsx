@@ -14,7 +14,6 @@ interface OneUserProps {
   dataObj: userType;
 }
 
-// закрывать списки при уходе со страницы
 const OneUser: FC<OneUserProps> = ({ dataObj }) => {
   const { error, data, refetch, isFetching, isSuccess, isError } = useQuery({
     queryFn: () => fetchStatistic(dataObj.id),

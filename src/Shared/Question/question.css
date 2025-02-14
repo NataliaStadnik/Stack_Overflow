@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 10px;
   padding-left: 60px;
+  word-break: break-word;
 }
 
 .question-article__wrapper {

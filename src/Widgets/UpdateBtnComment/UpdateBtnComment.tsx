@@ -3,10 +3,10 @@ import "./updateBtnComment.css";
 import { FC } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { deleteComment } from "../../api/comments/deleteComment";
-import Loader from "../Loader/Loader";
+import Loader from "../../Shared/Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
-import ErrorMessageFetch from "../ErrorMessageFetch/ErrorMessageFetch";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import { useLocation } from "react-router";
 
 interface UpdateBtnCommentProps {

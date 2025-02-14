@@ -11,7 +11,6 @@ export const createChangePasswordShema = z.object({
     path: ['confirm']
 })
 
-
 export type createChangePasswordForm = z.infer<typeof createChangePasswordShema>;
 
 export async function changePassword(data: createChangePasswordForm): Promise<void> {

@@ -89,3 +89,15 @@
   background-color: #3b82f680;
   width: 100px;
 }
+
+@media (max-width: 425px) {
+  .header__svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .header__name {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

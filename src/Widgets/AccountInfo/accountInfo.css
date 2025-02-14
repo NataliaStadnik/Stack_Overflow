@@ -66,3 +66,13 @@
   text-align: center;
   max-width: 130px;
 }
+
+@media (max-width: 1200px) {
+  .infos {
+    padding: 40px;
+    width: 100%;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

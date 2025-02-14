@@ -9,15 +9,17 @@ import { RootState } from "../../store/store";
 
 interface UserNavProps {
   to: string;
+  isOpen?: boolean;
+  setOpen?: (a: boolean) => void;
 }
 
-const UserNav: FC<UserNavProps> = ({ to }) => {
+const UserNav: FC<UserNavProps> = ({ to, isOpen, setOpen }) => {
   const userName = useSelector((state: RootState) => state.userState.username);
   const [href, setHref] = useState(to);
   useAuthNavigate(to, setHref);
 
   return (
-    <Link to={href} className="menu__user">
+    <Link onClick={() => setOpen?.(!isOpen)} to={href} className="menu__user">
       <img className="menu__img" src={User} alt="User photo" />
       <span className="name menu__name">{userName}</span>
       <Arrow classes="menu__user--svg" color="#fff" />

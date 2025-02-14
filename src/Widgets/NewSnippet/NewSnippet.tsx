@@ -1,6 +1,5 @@
 import { Button, Select } from "ui-components_innowise";
 import "./newSnippet.css";
-import SnippetBody from "../../Shared/SnippetBody/SnippetBody";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
 import { makeSelectArray } from "./makeSelectArray";
@@ -11,6 +10,7 @@ import { postNewSnippet } from "../../api/snippets/postNewSnippet";
 import { getLanguages } from "../../api/snippets/getLanguages";
 import { queryCLient } from "../../api/queryClients";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
+import CodeEditor from "../CodeEditor/CodeEditor";
 
 interface NewSnippetProps {
   values?: string;
@@ -81,12 +81,12 @@ const NewSnippet: FC<NewSnippetProps> = ({
 
       <div className="new-snippet new-snippet__body">
         <h3 className="new-snippet__title code-title">Code of your snippet:</h3>
-        <SnippetBody
+        <CodeEditor
           value={value}
           setValue={setValue}
           classes="new-snippet__code"
           language={select}
-          readonly={update && false}
+          readonly={false}
         />
 
         {registerMutation.isSuccess && (

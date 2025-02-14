@@ -9,9 +9,11 @@ import { useState } from "react";
 import DotsLoader from "../../Shared/DotsLoader/DotsLoader";
 import { fetchSnippetsComments } from "../../api/snippets/fetchSnippetsComments";
 import usePages from "../../hooks/usePages";
+import { useSearchParams } from "react-router";
 
 const HomePage = () => {
-  const [page, setPage] = useState("1");
+  const [params] = useSearchParams();
+  const [page, setPage] = useState(params.get("page") || "1");
 
   const { error, isError, isSuccess, data, isPending, refetch, isFetching } =
     useQuery({

@@ -15,6 +15,9 @@ export const statisticShema = z.object({
 export type statisticType = z.infer<typeof statisticShema>;
 
 export async function fetchStatistic(id: string): Promise<statisticType> {
-  return (await instance.get(`users/${id}/statistic`)).data.data.statistic
+  return (await instance.get(`users/${id}/statistic`)
+  .catch((err) => {
+      throw new Error(err.response.data.message)
+    })).data.data.statistic
 }
 

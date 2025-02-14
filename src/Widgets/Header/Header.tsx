@@ -7,8 +7,19 @@ import useLoginState from "../../hooks/useLoginState";
 import Loader from "../../Shared/Loader/Loader";
 import useLogout from "../../hooks/useLogout";
 import { authLogout } from "../../api/auth/authLogout";
+import { useMediaQuery } from "react-responsive";
+import { FC } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  isOpen: boolean;
+  setOpen: (a: boolean) => void;
+}
+
+const Header: FC<HeaderProps> = ({ isOpen, setOpen }) => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 620px)",
+  });
+
   const authState = useLoginState();
   const navigate = useNavigate();
   const logoutMutation = useLogout(authLogout);
@@ -24,31 +35,39 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container header__container">
+        {isMobile && (
+          <button onClick={() => setOpen(!isOpen)} className="btn-burger">
+            <div className="btn-line"></div>
+          </button>
+        )}
+
         <Link to={"/"} className="header__left">
           <Favicon classes="header__svg" color="#fff" />
           <h2 className="name header__name">CODELANG</h2>
         </Link>
 
-        <div className="header__right">
-          <Button
-            onClick={handleClick}
-            classes={`btn-header ${
-              logoutMutation.isPending ? "btn-loading" : ""
-            }`}
-          >
-            {logoutMutation.isPending ? (
-              <Loader type="small" />
-            ) : authState ? (
-              "Sign Out"
-            ) : (
-              "Sign in"
-            )}
-          </Button>
-          <div className="language">
-            <Language classes="language__svg" />
-            <span className="name language__name">EN</span>
+        {!isMobile && (
+          <div className="header__right">
+            <Button
+              onClick={handleClick}
+              classes={`btn-header ${
+                logoutMutation.isPending ? "btn-loading" : ""
+              }`}
+            >
+              {logoutMutation.isPending ? (
+                <Loader type="small" />
+              ) : authState ? (
+                "Sign Out"
+              ) : (
+                "Sign in"
+              )}
+            </Button>
+            <div className="language">
+              <Language classes="language__svg" />
+              <span className="name language__name">EN</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </header>
   );

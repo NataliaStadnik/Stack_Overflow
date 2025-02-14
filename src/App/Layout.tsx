@@ -7,9 +7,15 @@ import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { setUserInfo } from "../store/userSlice";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Layout = () => {
+  const isTablet = useMediaQuery({
+    query: "(min-width: 620px)",
+  });
+
+  const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { status, data } = useQuery({
     queryFn: () => auth(),
@@ -31,9 +37,11 @@ const Layout = () => {
     <Suspense>
       <div id="layout" className="layout">
         <h1 className="visually-hidden">Stack Overflow</h1>
-        <Header />
+        <Header isOpen={isOpen} setOpen={setOpen} />
+
         <div className="outer-wrapper">
-          <Menu />
+          {(isTablet || isOpen) && <Menu isOpen={isOpen} setOpen={setOpen} />}
+
           <div className="container section section__container">
             <Router />
           </div>

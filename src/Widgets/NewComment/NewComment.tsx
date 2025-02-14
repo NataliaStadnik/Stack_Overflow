@@ -2,17 +2,17 @@ import { FC } from "react";
 import "./newComment.css";
 import { Button } from "ui-components_innowise";
 import { useMutation } from "@tanstack/react-query";
-import Loader from "../Loader/Loader";
+import Loader from "../../Shared/Loader/Loader";
 import { queryCLient } from "../../api/queryClients";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import InputElement from "../InputElement/InputElement";
+import InputElement from "../../Shared/InputElement/InputElement";
 import Message from "../../svg/Message";
-import ButtonSvg from "../ButtonSvg/ButtonSvg";
+import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
 import Close from "../../svg/Close";
-import ErrorMessageFetch from "../ErrorMessageFetch/ErrorMessageFetch";
+import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import {
   commentPost,
   createCommentForm,
@@ -29,7 +29,6 @@ interface NewCommentProps {
   answerId?: string;
 }
 
-//  перенести в виджеты
 const NewComment: FC<NewCommentProps> = ({
   snippetId,
   setStatus,

@@ -2,7 +2,7 @@ import { Button } from "ui-components_innowise";
 import AllQuestions from "../../Widgets/AllQuestions/AllQuestions";
 import Pagination from "../../Widgets/Pagination/Pagination";
 import "./questionsPage.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
 import { useState } from "react";
@@ -12,8 +12,9 @@ import { getAllQuestions } from "../../api/questions/getAllQuestions";
 import usePages from "../../hooks/usePages";
 
 const QuestionsPage = () => {
+  const [params] = useSearchParams();
+  const [page, setPage] = useState(params.get("page") || "1");
   const navigate = useNavigate();
-  const [page, setPage] = useState("1");
 
   const handleClick = () => {
     navigate("/questions/new");

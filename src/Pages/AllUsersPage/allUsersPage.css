@@ -14,3 +14,9 @@
   width: 100%;
   padding-top: 40px;
 }
+
+@media (max-width: 1200px) {
+  .all-users-list {
+    flex-direction: column;
+  }
+}

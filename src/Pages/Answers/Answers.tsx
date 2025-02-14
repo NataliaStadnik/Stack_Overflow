@@ -6,7 +6,7 @@ import { getOneQuestion } from "../../api/questions/getOneQuestion";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 import Loader from "../../Shared/Loader/Loader";
 import { useState } from "react";
-import NewComment from "../../Shared/NewComment/NewComment";
+import NewComment from "../../Widgets/NewComment/NewComment";
 import Comment from "../../Shared/Comment/Comment";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";

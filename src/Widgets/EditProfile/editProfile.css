@@ -26,3 +26,20 @@
   width: 24px;
   height: 24px;
 }
+
+@media (max-width: 1200px) {
+  .edit-profile {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .edit-wrapper {
+    flex-direction: column;
+  }
+
+  .register--correct {
+    bottom: 50px;
+  }
+}

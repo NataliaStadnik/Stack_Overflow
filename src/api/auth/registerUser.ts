@@ -9,10 +9,10 @@ export const createRegisterShema = z.object({
     ),
   confirm: z.string().min(6, "Password should be at least 6 characters"),
 })
-.refine((data) => data.password === data.confirm, {
-    message: "The passwords don't match",
-    path: ['confirm']
-})
+  .refine((data) => data.password === data.confirm, {
+      message: "The passwords don't match",
+      path: ['confirm']
+  })
 
 
 export type createRegisterForm = z.infer<typeof createRegisterShema>;

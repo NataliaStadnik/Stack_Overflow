@@ -93,7 +93,9 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
       </div>
 
       <Link onClick={handleClick} to={href} className="snippet__feedback">
-        <span className="snippet-text">{dataObj.comments?.length}</span>
+        <span className="snippet-text comments__count">
+          {dataObj.comments?.length}
+        </span>
         <Message classes="snippet__svg" />
       </Link>
     </div>

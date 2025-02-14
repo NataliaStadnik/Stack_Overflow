@@ -1,6 +1,6 @@
 import HeaderSection from "../../Widgets/HeaderSection/HeaderSection";
 import "./editSnippetPage.css";
-import NewSnippet from "../../Widgets/NewSnippet.tsx/NewSnippet";
+import NewSnippet from "../../Widgets/NewSnippet/NewSnippet";
 import useLastIdLocation from "../../hooks/useLastIdLocation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchComments } from "../../api/snippets/fetchComments";
