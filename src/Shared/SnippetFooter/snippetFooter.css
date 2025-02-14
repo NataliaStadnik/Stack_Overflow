@@ -1,0 +1,48 @@
+.snippet__footer {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.snippet__likes {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.likes-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.likes-wrap svg {
+  transition: all .2s ease-in;
+}
+
+.likes-wrap:hover svg {
+  transform: scale(115%);
+}
+
+.snippet__feedback {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all .2s ease-in;
+}
+
+.snippet__feedback svg {
+  transition: all .2s ease-in;
+}
+
+.snippet__feedback:hover svg {
+  transform: scale(115%);
+}
+
+.snippet__feedback:focus-visible {
+  outline: 2px solid var(--color-blue);
+}
+
+.comments__count {
+  width: max-content;
+}

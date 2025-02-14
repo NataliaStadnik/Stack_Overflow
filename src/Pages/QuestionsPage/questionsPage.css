@@ -1,0 +1,27 @@
+.questions-page {
+  padding-top: 15px;
+}
+
+.section .ask-question {
+  position: absolute;
+  width: 30%;
+  top: 110px;
+  left: 30px;
+  padding: 10px 0;
+  transition: all .2s ease-in;
+}
+
+@media (max-width: 725px) {
+  .section .ask-question {
+    width: 100px;
+  }
+}
+
+@media (max-width: 425px) {
+  .section .ask-question {
+    width: 150px;
+    top: 67px;
+    right: 15px;
+    left: initial;
+  }
+}
