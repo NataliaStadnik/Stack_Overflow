@@ -1,9 +1,0 @@
-.register--error {
-  width: max-content;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  bottom: 55px;
-  color: var(--color-red-error);
-  font-size: 14px;
-}
