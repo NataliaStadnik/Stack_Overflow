@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputElement from "../../Shared/InputElement/InputElement";
 import Message from "../../svg/Message";
-import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
+import IconButton from "../../Shared/IconButton/IconButton";
 import Close from "../../svg/Close";
 import ErrorMessageFetch from "../../Shared/ErrorMessageFetch/ErrorMessageFetch";
 import {
@@ -88,7 +88,7 @@ const NewComment: FC<NewCommentProps> = ({
             <ErrorMessageFetch mutation={registerMutation} />
           ))}
 
-        <ButtonSvg
+        <IconButton
           classes="close-btn"
           svg={<Close classes="close-comment-svg" color="grey" />}
           onClick={() => setStatus(false)}
@@ -113,16 +113,13 @@ const NewComment: FC<NewCommentProps> = ({
         />
       </div>
 
-      <Button
-        classes="comment-send"
-        children={
-          registerMutation.isPending || answerMutation.isPending ? (
-            <Loader type="small" />
-          ) : (
-            "Send"
-          )
-        }
-      />
+      <Button classes="comment-send">
+        {registerMutation.isPending || answerMutation.isPending ? (
+          <Loader type="small" />
+        ) : (
+          "Send"
+        )}
+      </Button>
     </form>
   );
 };

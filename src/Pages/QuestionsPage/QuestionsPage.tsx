@@ -44,11 +44,9 @@ const QuestionsPage = () => {
 
       {isFetching && <DotsLoader />}
 
-      <Button
-        onClick={handleClick}
-        classes="ask-question"
-        children={"Ask question"}
-      />
+      <Button onClick={handleClick} classes="ask-question">
+        Ask question
+      </Button>
 
       {isError && (
         <div>

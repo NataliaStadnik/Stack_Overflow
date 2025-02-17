@@ -27,6 +27,3 @@ export type MarkType = {
 
 export type OneMark = 'like' | 'dislike' | 'none'
 export type MarkTypeArray = Array<MarkType>
-
-
-

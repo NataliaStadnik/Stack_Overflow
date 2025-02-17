@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router";
 import Dislike from "../../svg/Dislike";
 import Like from "../../svg/Like";
-import ButtonSvg from "../ButtonSvg/ButtonSvg";
+import IconButton from "../IconButton/IconButton";
 import "./snippetFooter.css";
 import Message from "../../svg/Message";
 import { FC, useState } from "react";
@@ -24,8 +24,7 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
   const path = useLocation();
   const authState = useLoginState();
   const navigate = useNavigate();
-  const [href, setHref] = useState(to);
-  useAuthNavigate(`${to}/${dataObj.id}`, setHref);
+  const { href } = useAuthNavigate(`${to}/${dataObj.id}`);
 
   const marksStatus = GetMarks(dataObj.marks, myId);
   const [like, setLike] = useState(marksStatus.like);
@@ -77,14 +76,14 @@ const SnippetFooter: FC<SnippetFooterProps> = ({ to = "posts", dataObj }) => {
   return (
     <div className="snippet__footer">
       <div className="snippet__likes">
-        <ButtonSvg
+        <IconButton
           onClick={() => handleMark("like")}
           label={like}
           classes="likes-wrap snippet-text"
           svg={<Like classes="snippet__svg" />}
         />
 
-        <ButtonSvg
+        <IconButton
           onClick={() => handleMark("dislike")}
           label={dislike}
           classes="likes-wrap snippet-text"

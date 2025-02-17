@@ -33,8 +33,9 @@ const PostPage = () => {
         <Button
           onClick={() => setStatus(true)}
           classes="edit-snippet addcomment-snippet"
-          children={"Add comment"}
-        />
+        >
+          Add comment
+        </Button>
       </div>
 
       {isError && (

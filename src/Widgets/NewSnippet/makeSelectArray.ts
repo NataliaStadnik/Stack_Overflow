@@ -7,7 +7,7 @@ type SelectObject = Array<{
 
 export function makeSelectArray(languages: Languages) {
   const options: SelectObject = [];
-  languages.forEach((elem) => {
+  languages.map((elem) => {
     options.push({ value: elem, label: elem });
   });
   return options;

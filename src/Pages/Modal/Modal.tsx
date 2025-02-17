@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
+import IconButton from "../../Shared/IconButton/IconButton";
 import Close from "../../svg/Close";
 import Register from "../../Widgets/Register/Register";
 import "./modal.css";
@@ -23,7 +23,7 @@ const Modal: FC<ModalProps> = ({ type }) => {
   return createPortal(
     <div id="backdrop" className="backdrop" onClick={(e) => handleClose(e)}>
       <div className="modal-wrapper">
-        <ButtonSvg
+        <IconButton
           classes="close-btn"
           svg={<Close classes="close-modal-svg" />}
           onClick={() => navigate("/")}

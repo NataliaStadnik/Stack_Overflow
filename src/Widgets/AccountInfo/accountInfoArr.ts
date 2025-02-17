@@ -1,6 +1,6 @@
 import { statisticType } from "../../api/users/fetchStatistic";
 
-export function getstatisticArr(data: statisticType) {
+export function getStatisticArr(data: statisticType) {
   return [
     { id: 0, label: "Rating", value: data.rating },
     { id: 1, label: "Snippets", value: data.snippetsCount },

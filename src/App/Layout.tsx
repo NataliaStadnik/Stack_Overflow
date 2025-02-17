@@ -7,7 +7,7 @@ import { setAuthFalse, setAuthTrue } from "../store/authSlice";
 import Loader from "../Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { setUserInfo } from "../store/userSlice";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Layout = () => {
@@ -23,16 +23,22 @@ const Layout = () => {
     retry: 1,
   });
 
-  switch (status) {
-    case "pending":
-      return <Loader type="big" />;
-    case "error":
-      dispatch(setAuthFalse());
-      break;
-    case "success":
-      dispatch(setAuthTrue());
-      dispatch(setUserInfo(data));
+  useEffect(() => {
+    switch (status) {
+      case "error":
+        dispatch(setAuthFalse());
+        break;
+      case "success":
+        dispatch(setAuthTrue());
+        dispatch(setUserInfo(data));
+        break;
+    }
+  }, [status]);
+
+  if (status === "pending") {
+    return <Loader type="big" />;
   }
+
   return (
     <Suspense>
       <div id="layout" className="layout">

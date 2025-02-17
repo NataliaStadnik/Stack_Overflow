@@ -2,7 +2,7 @@ import Arrow from "../../svg/Arrow";
 import User from "../../assets/img/man.jpg";
 import "./userNav.css";
 import { Link } from "react-router";
-import { FC, useState } from "react";
+import { FC } from "react";
 import useAuthNavigate from "../../hooks/useAuthNavigate";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -15,8 +15,7 @@ interface UserNavProps {
 
 const UserNav: FC<UserNavProps> = ({ to, isOpen, setOpen }) => {
   const userName = useSelector((state: RootState) => state.userState.username);
-  const [href, setHref] = useState(to);
-  useAuthNavigate(to, setHref);
+  const { href } = useAuthNavigate(to);
 
   return (
     <Link onClick={() => setOpen?.(!isOpen)} to={href} className="menu__user">

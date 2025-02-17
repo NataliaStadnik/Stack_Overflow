@@ -58,16 +58,13 @@ const ChangePassword = () => {
         </span>
       )}
 
-      <Button
-        classes="edit-user--btn"
-        children={
-          registerMutation.isPending ? (
-            <Loader type="small" />
-          ) : (
-            "Change password"
-          )
-        }
-      />
+      <Button classes="edit-user--btn">
+        {registerMutation.isPending ? (
+          <Loader type="small" />
+        ) : (
+          "Change password"
+        )}
+      </Button>
     </form>
   );
 };

@@ -1,5 +1,5 @@
 import User from "../../assets/img/man.jpg";
-import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
+import IconButton from "../../Shared/IconButton/IconButton";
 import InfoElement from "../../Shared/InfoElement/InfoElement";
 import Delete from "../../svg/Delete";
 import Logout from "../../svg/Logout";
@@ -32,12 +32,12 @@ const AccountInfo: FC<AccountInfoProps> = ({ forPage }) => {
 
         {forPage === "account" && (
           <div className="identity__btn">
-            <ButtonSvg
+            <IconButton
               onClick={() => logoutMutation.mutate()}
               classes="infos-btn"
               svg={<Logout classes="infos-svg" />}
             />
-            <ButtonSvg
+            <IconButton
               onClick={() => deleteMutation.mutate()}
               classes="infos-btn"
               svg={<Delete classes="infos-svg" />}

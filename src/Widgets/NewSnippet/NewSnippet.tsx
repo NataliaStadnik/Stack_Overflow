@@ -35,6 +35,7 @@ const NewSnippet: FC<NewSnippetProps> = ({
         ? updateSnippet({ code: value, language: select }, snippetID)
         : postNewSnippet({ code: value, language: select }),
     onSuccess() {
+      setValue("");
       queryCLient.invalidateQueries({
         queryKey: [`snippets/${id}}`],
       });
@@ -97,18 +98,15 @@ const NewSnippet: FC<NewSnippetProps> = ({
 
         <ErrorMessageFetch mutation={registerMutation} />
       </div>
-      <Button
-        classes="new-snippet__btn"
-        children={
-          registerMutation.isPending ? (
-            <Loader type="small" />
-          ) : update ? (
-            "Update snippet"
-          ) : (
-            "Create snippet"
-          )
-        }
-      />
+      <Button classes="new-snippet__btn">
+        {registerMutation.isPending ? (
+          <Loader type="small" />
+        ) : update ? (
+          "Update snippet"
+        ) : (
+          "Create snippet"
+        )}
+      </Button>
     </form>
   );
 };

@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import ButtonSvg from "../../Shared/ButtonSvg/ButtonSvg";
+import IconButton from "../../Shared/IconButton/IconButton";
 import Arrow from "../../svg/Arrow";
 import "./pagination.css";
 import { useSearchParams } from "react-router";
@@ -33,7 +33,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
 
   return (
     <div className="pagination">
-      <ButtonSvg
+      <IconButton
         onClick={DecreasePage}
         svg={<Arrow classes="arrow-pag arrow-pag-left" color="#00000054" />}
         disabled={+currentPage === 1}
@@ -44,7 +44,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage = "1", maxPage }) => {
         onChange={(e) => handleChange(e.target.value)}
         onBlur={() => handleChange(currentPage)}
       />
-      <ButtonSvg
+      <IconButton
         onClick={IncreasePage}
         svg={<Arrow classes="arrow-pag" color="#00000054" />}
         disabled={maxPage !== undefined && +maxPage === +currentPage}

@@ -34,14 +34,16 @@ const Answers = () => {
         <Button
           onClick={() => setStatus(true)}
           classes="edit-snippet addcomment-snippet"
-          children={"Add answer"}
-        />
+        >
+          Add answer
+        </Button>
         {userId === data?.user.id && (
           <Button
             onClick={() => navigation(`/questions/${id}`)}
             classes="edit-snippet addcomment-snippet"
-            children={"Edit question"}
-          />
+          >
+            Edit question
+          </Button>
         )}
       </div>
 

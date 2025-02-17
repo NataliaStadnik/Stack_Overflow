@@ -93,12 +93,9 @@ const CreateQuestion: FC<CreateQuestionProps> = ({
         </span>
       )}
 
-      <Button
-        classes="ask-form__btn"
-        children={
-          registerMutation.isPending ? <Loader type="small" /> : "Confirm"
-        }
-      />
+      <Button classes="ask-form__btn">
+        {registerMutation.isPending ? <Loader type="small" /> : "Confirm"}
+      </Button>
     </form>
   );
 };

@@ -20,4 +20,3 @@ export async function fetchStatistic(id: string): Promise<statisticType> {
       throw new Error(err.response.data.message)
     })).data.data.statistic
 }
-

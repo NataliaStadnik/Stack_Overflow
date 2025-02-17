@@ -65,10 +65,9 @@ const ChangeUsername = () => {
         </span>
       )}
 
-      <Button
-        classes="edit-user--btn"
-        children={registerMutation.isPending ? <Loader type="small" /> : "Save"}
-      />
+      <Button classes="edit-user--btn">
+        {registerMutation.isPending ? <Loader type="small" /> : "Save"}
+      </Button>
     </form>
   );
 };

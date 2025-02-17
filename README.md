@@ -78,7 +78,7 @@
 |   │   ├── QuestionsPage/
 |   │   ├── UserPage/
 │   ├── Shared/
-|   │   ├── ButtonSvg/
+|   │   ├── IconButton/
 |   │   ├── Comment/
 |   │   ├── DotsLoader/
 |   │   ├── ErrorMessageFetch/

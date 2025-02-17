@@ -34,9 +34,10 @@ const SnippetHeader: FC<SnippetHeaderProps> = ({ dataObj }) => {
           classes="comment__update"
           size="small"
           variant="text"
-          children={"Edit snippet"}
           onClick={handleCLick}
-        />
+        >
+          Edit snippet
+        </Button>
       )}
 
       <div className="snippet__language">

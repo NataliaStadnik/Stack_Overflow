@@ -67,11 +67,12 @@ const MySnippetsPage = () => {
             <Button
               href={"/snippet/new"}
               classes="no-snippets-btn"
-              children={"Create snippet"}
               size="large"
               variant="text"
               onClick={handleClick}
-            />
+            >
+              Create snippet
+            </Button>
           </div>
         ))}
     </>

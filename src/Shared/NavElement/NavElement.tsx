@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Link } from "react-router";
 import "./navElement.css";
 import useAuthNavigate from "../../hooks/useAuthNavigate";
@@ -18,8 +18,7 @@ const NavElement: FC<NavElementProps> = ({
   isOpen,
   setOpen,
 }) => {
-  const [href, setHref] = useState(to);
-  useAuthNavigate(to, setHref);
+  const { href } = useAuthNavigate(to);
 
   return (
     <li className="menu__item">

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./codeEditor.css";
 import { Editor, loader } from "@monaco-editor/react";
 
@@ -27,16 +27,18 @@ const CodeEditor: FC<CodeEditorProps> = ({
     }
   };
 
-  loader.init().then((monaco) => {
-    monaco.editor.defineTheme("myTheme", {
-      base: "vs",
-      inherit: true,
-      rules: [],
-      colors: {
-        "editor.background": "#80808017",
-      },
+  useEffect(() => {
+    loader.init().then((monaco) => {
+      monaco.editor.defineTheme("myTheme", {
+        base: "vs",
+        inherit: true,
+        rules: [],
+        colors: {
+          "editor.background": "#80808017",
+        },
+      });
     });
-  });
+  }, []);
 
   return (
     <div className={`snippet__body codebase ${classes}`}>

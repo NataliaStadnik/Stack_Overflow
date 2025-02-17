@@ -1,19 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useLoginState from "./useLoginState";
 
-const useAuthNavigate = (
-  to: string,
-  setLink: React.Dispatch<React.SetStateAction<string>>
-) => {
+const useAuthNavigate = (to: string) => {
+  const [href, setHref] = useState(to);
   const authState = useLoginState();
 
   useEffect(() => {
     if (!authState && to !== "/") {
-      setLink("/login");
+      setHref("/login");
     } else {
-      setLink(to);
+      setHref(to);
     }
-  }, [authState, setLink, to]);
+  }, [authState, to]);
+
+  return { href, setHref };
 };
 
 export default useAuthNavigate;

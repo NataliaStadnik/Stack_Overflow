@@ -8,4 +8,3 @@ export async function auth(): Promise<userType> {
       throw new Error(err.response.data.message)
     })).data.data
 }
-

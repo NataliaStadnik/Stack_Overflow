@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchStatistic } from "../../api/users/fetchStatistic";
 import { userType } from "../../api/auth/authLogin";
 import Loader from "../../Shared/Loader/Loader";
-import { getstatisticArr } from "../AccountInfo/accountInfoArr";
+import { getStatisticArr } from "../AccountInfo/accountInfoArr";
 import InfoElement from "../../Shared/InfoElement/InfoElement";
 import User from "../../svg/User";
 
@@ -31,10 +31,9 @@ const OneUser: FC<OneUserProps> = ({ dataObj }) => {
       <UserInfo data={dataObj} />
 
       {!isSuccess && (
-        <Button
-          onClick={handleClick}
-          children={isFetching ? <Loader type="small" /> : "Show statistic"}
-        />
+        <Button onClick={handleClick}>
+          {isFetching ? <Loader type="small" /> : "Show statistic"}
+        </Button>
       )}
       {isError && (
         <div className="error-message">
@@ -43,7 +42,7 @@ const OneUser: FC<OneUserProps> = ({ dataObj }) => {
       )}
       {isSuccess && (
         <ul className="infos-list">
-          {getstatisticArr(data)?.map((elem) => (
+          {getStatisticArr(data)?.map((elem) => (
             <InfoElement key={elem.id} label={elem.label} value={elem.value} />
           ))}
         </ul>

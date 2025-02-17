@@ -29,7 +29,7 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
   });
 
   if (location.pathname.includes("answers")) {
-    return;
+    return null;
   }
 
   return (
@@ -41,16 +41,18 @@ const UpdateBtnComment: FC<UpdateBtnCommentProps> = ({
         classes="comment__update"
         size="small"
         variant="text"
-        children={"Edit"}
         onClick={() => setStatus(true)}
-      />
+      >
+        Edit
+      </Button>
       <Button
         classes="comment__update"
         size="small"
         variant="text"
-        children={deleteMutation.isPending ? <Loader type="small" /> : "Delete"}
         onClick={() => deleteMutation.mutate()}
-      />
+      >
+        {deleteMutation.isPending ? <Loader type="small" /> : "Delete"}
+      </Button>
     </div>
   );
 };

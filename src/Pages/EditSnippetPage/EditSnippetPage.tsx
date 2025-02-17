@@ -43,10 +43,9 @@ const EditSnippetPage = () => {
         classes="delete-snippet"
         onClick={() => deleteMutation.mutate()}
         variant="text"
-        children={
-          deleteMutation.isPending ? <Loader type="small" /> : "Delete snippet"
-        }
-      />
+      >
+        {deleteMutation.isPending ? <Loader type="small" /> : "Delete snippet"}
+      </Button>
       {isSuccess && (
         <NewSnippet
           update

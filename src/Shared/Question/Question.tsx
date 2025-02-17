@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Archery from "../../svg/Archery";
 import Eye from "../../svg/Eye";
-import ButtonSvg from "../ButtonSvg/ButtonSvg";
+import IconButton from "../IconButton/IconButton";
 import "./question.css";
 import { useNavigate } from "react-router";
 import { OneQuestion } from "../../api/questions/getAllQuestions";
@@ -41,7 +41,7 @@ const Question: FC<QuestionProps> = ({ dataObj }) => {
               }`}
             ></div>
           </div>
-          <ButtonSvg
+          <IconButton
             onClick={handleClick}
             classes="eye-btn"
             svg={<Eye classes="eye-svg" />}

@@ -55,12 +55,9 @@ const Register = () => {
 
         <ErrorMessageFetch mutation={registerMutation} />
 
-        <Button
-          classes="btn-confirm"
-          children={
-            registerMutation.isPending ? <Loader type="small" /> : "Confirm"
-          }
-        />
+        <Button classes="btn-confirm">
+          {registerMutation.isPending ? <Loader type="small" /> : "Confirm"}
+        </Button>
       </form>
 
       <div className="sign">
