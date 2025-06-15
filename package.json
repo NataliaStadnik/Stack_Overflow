@@ -1,9 +1,9 @@
 {
-  "name": "my",
+  "name": "Stack_Overflow",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nataliastadnik.github.io/Stack_Overflow/",
+  "homepage": "https://nataliastadnik.github.io/Stack_Overflow",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
