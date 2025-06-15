@@ -11,7 +11,7 @@ const App = () => {
     <>
       <QueryClientProvider client={queryCLient}>
         <Provider store={store}>
-          <BrowserRouter>
+          <BrowserRouter basename="/Stack_Overflow">
             <Layout />
           </BrowserRouter>
         </Provider>
