@@ -1,0 +1,2 @@
+import{j as e}from"./index-BM7gXiEi.js";import{H as t}from"./HeaderSection-COAfhMFu.js";import{N as i}from"./NewSnippet-NkjXcmec.js";import"./ErrorMessageFetch-2ytYcsZd.js";import"./useLastIdLocation-2wvBTfus.js";import"./CodeEditor-DXR2qW-n.js";const a=()=>e.jsxs("section",{className:"section__snippet",children:[e.jsx(t,{title:"Create new Snippet!"}),e.jsx(i,{})]});export{a as default};
+//# sourceMappingURL=NewSnippetPage-BRzlIu5-.js.map

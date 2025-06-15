@@ -1,0 +1,2 @@
+import{j as t}from"./index-BM7gXiEi.js";import{C as e}from"./CreateQuestion-D53X2PUZ.js";import{H as o}from"./HeaderSection-COAfhMFu.js";import"./zod-CberE-wn.js";import"./index-ans_9-if.js";import"./ErrorMessageFetch-2ytYcsZd.js";import"./CodeEditor-DXR2qW-n.js";const u=()=>t.jsxs("section",{className:"new-question",children:[t.jsx(o,{title:"Ask your question"}),t.jsx(e,{})]});export{u as default};
+//# sourceMappingURL=NewQuestionPage-WemlDC9u.js.map

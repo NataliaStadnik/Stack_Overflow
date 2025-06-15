@@ -1,0 +1,2 @@
+import{j as e}from"./index-BM7gXiEi.js";const t=({classes:s,color:o="#fff"})=>e.jsx("svg",{className:s,"aria-hidden":"true",width:"800px",height:"800px",viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",children:e.jsx("g",{id:"Menu / Close_MD",children:e.jsx("path",{id:"Vector",d:"M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18",stroke:o,strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"})})});export{t as C};
+//# sourceMappingURL=Close-D6xosMpA.js.map
